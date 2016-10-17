@@ -10,19 +10,20 @@ import Foundation
 
 class Lobby{
 
-    fileprivate var gs : GameSetting
+    var gs : GameSetting
     //will need a variable to hold the list of player tuples (player, ready, seeker)
     //will need a host/creater/user variable
     
     init() {
         gs = GameSetting()
+        // gs.edit() - Allow the user to select the settings for the game
+    }
+    
+    func editSettings(_ x: Int){ // TODO: take a Role later
         gs.edit()
     }
     
-    func editSettings(_ x: Int){
-        gs.edit()
-    }
-    
+    //TODO: Implement these functions
     func start(){}
     func invite(){}
     func kick(){}
@@ -35,36 +36,77 @@ class Lobby{
     
     
     class GameSetting{
-        var time: Int
-        var maxPlayers: Int
-        var minPlayers: Int
-        var gameCode: String = ""
         
-        init() {
-            time = 6000
-            maxPlayers = 1000
-            minPlayers = 0
-            gameCode = genCode()
+        // MARK: - Fields
+        private var _time: Int
+        var time: Int{
+            get{
+                return _time
+            }
+            set(newValue){
+                if (newValue > 0){
+                    _time = newValue
+                }
+            }
         }
         
-        func genCode() -> String{
-            return "1"
+        private var _maxPlayers: Int
+        var maxPlayers: Int {
+            get{
+                return _maxPlayers
+            }
+            set(newValue){
+                if (_maxPlayers >= _minPlayers && _maxPlayers >= 2) {
+                    _maxPlayers = newValue
+                }
+            }
         }
         
+        private var _minPlayers: Int
+        var minPlayers: Int {
+            get{
+                return _minPlayers
+            }
+            set(newValue){
+                if (_minPlayers <= _maxPlayers && _minPlayers >= 2) {
+                    _minPlayers = newValue
+                }
+            }
+        }
+        
+        private var _gameCode: String
+        var gameCode: String {
+            get{
+                return _gameCode
+            }
+        }
+        
+        // TODO: var Boundaries
+        
+        
+        // MARK: - Methods
+        init(){
+            _time = 6000
+            _maxPlayers = 1000
+            _minPlayers = 2
+            _gameCode = GameSetting.genCode()
+        }
+        
+        //load view to change game settings
         func edit(){
-            //load view to change everything wrong with this class
-            //for now... :
+            // test values for now... :
             time = 6001
             maxPlayers = 10
             minPlayers = 3
         }
         
-        func getCode() -> String{
-            return gameCode
+        //change the bounds of the map when that exists
+        func changeBounds(){
+            // TODO: implement method
         }
         
-        func changeBounds(){
-            //change the bounds of the map when that exists
+        class func genCode() -> String{
+            return "1"
         }
         
     }

@@ -22,8 +22,13 @@
 		921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D091DB42999009E9E16 /* Map.swift */; };
 		A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D0B1DB429AC009E9E16 /* Tile.swift */; };
-		D735D6B31DB575A300876261 /* TileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735D6B21DB575A300876261 /* TileTest.swift */; };
 		BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0462851DB56F3E00C0D879 /* MapTests.swift */; };
+		D735D6B31DB575A300876261 /* TileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735D6B21DB575A300876261 /* TileTest.swift */; };
+		ED6387601DB583E100FEEFC7 /* Seeker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63875F1DB583E100FEEFC7 /* Seeker.swift */; };
+		ED6387611DB583E100FEEFC7 /* Seeker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63875F1DB583E100FEEFC7 /* Seeker.swift */; };
+		ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
+		ED6387681DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
+		ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387691DB5851300FEEFC7 /* RoleTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +69,11 @@
 		921F0EB01DB17AD500C747D8 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		A00A5D091DB42999009E9E16 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A00A5D0B1DB429AC009E9E16 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		D735D6B21DB575A300876261 /* TileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileTest.swift; sourceTree = "<group>"; };
 		BC0462851DB56F3E00C0D879 /* MapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTests.swift; sourceTree = "<group>"; };
+		D735D6B21DB575A300876261 /* TileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileTest.swift; sourceTree = "<group>"; };
+		ED63875F1DB583E100FEEFC7 /* Seeker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seeker.swift; sourceTree = "<group>"; };
+		ED6387661DB5844C00FEEFC7 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		ED6387691DB5851300FEEFC7 /* RoleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,7 @@
 		7A0A33B21DB16D3000C2F2D1 /* ios-project */ = {
 			isa = PBXGroup;
 			children = (
+				ED6387651DB5843900FEEFC7 /* Roles */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
@@ -139,6 +148,7 @@
 				7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */,
 				D735D6B21DB575A300876261 /* TileTest.swift */,
 				BC0462851DB56F3E00C0D879 /* MapTests.swift */,
+				ED6387691DB5851300FEEFC7 /* RoleTest.swift */,
 			);
 			path = "ios-projectTests";
 			sourceTree = "<group>";
@@ -159,6 +169,15 @@
 				7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */,
 			);
 			name = Skills;
+			sourceTree = "<group>";
+		};
+		ED6387651DB5843900FEEFC7 /* Roles */ = {
+			isa = PBXGroup;
+			children = (
+				ED63875F1DB583E100FEEFC7 /* Seeker.swift */,
+				ED6387661DB5844C00FEEFC7 /* Role.swift */,
+			);
+			name = Roles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +319,9 @@
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
 				A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
+				ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */,
 				A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */,
+				ED6387601DB583E100FEEFC7 /* Seeker.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +335,10 @@
 				BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,
 				D735D6B31DB575A300876261 /* TileTest.swift in Sources */,
+				ED6387611DB583E100FEEFC7 /* Seeker.swift in Sources */,
+				ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */,
 				7A6D0C2A1DB56F5E00CE586E /* SkillsTest.swift in Sources */,
+				ED6387681DB5844C00FEEFC7 /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

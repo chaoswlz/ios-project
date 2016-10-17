@@ -17,20 +17,27 @@ class Map {
     var bottomRightPoint: MKMapPoint!
     var mapSize: MKMapSize?
     var mapActual: MKMapRect?
-    var map : Map?
+    static var map : Map?
     
+    //not singleton yet
     init(topCorner: MKMapPoint, botCorner: MKMapPoint, tileSize: Int){
         topLeftPoint = topCorner
         bottomRightPoint = botCorner
         Tile.setTileSize(size: tileSize) //set default value?
+        updateMapDimensions()
     }
     
-    func determineDimensions() {
+    func updateMapDimensions() {
         let tileSize : Int = Tile.getTileSize()
         self.mapSizeX  = bottomRightPoint.x - topLeftPoint.x
         self.mapSizeY = bottomRightPoint.y - topLeftPoint.y
         let xTiles = Int(floor(Double(Int(mapSizeX) / tileSize)))
         let yTiles = Int(floor(Double(Int(mapSizeY) / tileSize)))
+        
+        mapSize = MKMapSize( width: Double(Tile.getTileSize() * xTiles),
+                             height: Double(Tile.getTileSize() * yTiles))
+        
+        mapActual = MKMapRect(origin: topLeftPoint, size: mapSize!)
         
         initTiles(numTiles: xTiles * yTiles)
     }
@@ -41,4 +48,7 @@ class Map {
         }
     }
     
+    func setPowerUps(tiles: Set<Tile>, numPowerUps: Int) {
+//        TODO
+    }
 }

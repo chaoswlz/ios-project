@@ -9,28 +9,42 @@
 import Foundation
 
 class Lobby{
-
-    var gs : GameSetting
+    
+    var settings : GameSetting
     //will need a variable to hold the list of player tuples (player, ready, seeker)
     //will need a host/creater/user variable
     
     init() {
-        gs = GameSetting()
-        // gs.edit() - Allow the user to select the settings for the game
+        settings = GameSetting()
+        // settings.edit() - Allow the user to select the settings for the game
     }
     
     func editSettings(_ x: Int){ // TODO: take a Role later
-        gs.edit()
+        settings.edit()
     }
     
     //TODO: Implement these functions
-    func start(){}
-    func invite(){}
-    func kick(){}
-    func changeRole(){}
-    func toggleReady(){}
-    func resetReady(){}
-    func closeLobby(){}
+    
+    // Starts the game
+    func lobbyStart(){}
+    
+    // Invites a player to the lobby
+    func lobbyInvite(_ playerId: String){}
+    
+    // Kicks a player from the lobby
+    func lobbyKick(_ playerId: String){}
+    
+    // Allows the host to change a role of a player in the lobby
+    func lobbyChangeRole(_ playerId: String, _ role: String){}
+    
+    // Toggles the current users ready status
+    func lobbyToggleReady(){}
+    
+    // Sets the ready status to false for all players in the lobby
+    func lobbyResetReady(){}
+    
+    // Closes the lobby
+    func lobbyCloseLobby(){}
     
     //will need a function to add a player to the players list when that exists
     
@@ -56,7 +70,7 @@ class Lobby{
                 return _maxPlayers
             }
             set(newValue){
-                if (_maxPlayers >= _minPlayers && _maxPlayers >= 2) {
+                if (newValue >= _minPlayers && newValue >= 2) {
                     _maxPlayers = newValue
                 }
             }
@@ -68,7 +82,7 @@ class Lobby{
                 return _minPlayers
             }
             set(newValue){
-                if (_minPlayers <= _maxPlayers && _minPlayers >= 2) {
+                if (newValue <= _maxPlayers && newValue >= 2) {
                     _minPlayers = newValue
                 }
             }

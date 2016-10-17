@@ -14,6 +14,8 @@
 		7A0A33BE1DB16D3000C2F2D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0A33BC1DB16D3000C2F2D1 /* LaunchScreen.storyboard */; };
 		7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */; };
 		7A0A33D41DB16D3100C2F2D1 /* ios_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */; };
+		A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965D1DB56DBD00ACD756 /* Profile.swift */; };
+		A90B96601DB5740500ACD756 /* ProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965F1DB5740500ACD756 /* ProfileTest.swift */; };
 		7A6D0C2A1DB56F5E00CE586E /* SkillsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */; };
 		7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87046F1DB17D4A009C6A6A /* Skill.swift */; };
 		7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */; };
@@ -62,6 +64,8 @@
 		7A0A33CF1DB16D3100C2F2D1 /* ios-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_projectUITests.swift; sourceTree = "<group>"; };
 		7A0A33D51DB16D3100C2F2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A90B965D1DB56DBD00ACD756 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		A90B965F1DB5740500ACD756 /* ProfileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTest.swift; sourceTree = "<group>"; };
 		7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTest.swift; sourceTree = "<group>"; };
 		7A87046F1DB17D4A009C6A6A /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomGrid.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				ED6387651DB5843900FEEFC7 /* Roles */,
+				A90B965D1DB56DBD00ACD756 /* Profile.swift */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
@@ -144,6 +149,7 @@
 			children = (
 				7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */,
 				7A0A33CA1DB16D3100C2F2D1 /* Info.plist */,
+				A90B965F1DB5740500ACD756 /* ProfileTest.swift */,
 				7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */,
 				7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */,
 				D735D6B21DB575A300876261 /* TileTest.swift */,
@@ -317,6 +323,7 @@
 				7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */,
 				7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
+				A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */,
 				A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
 				ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */,
@@ -334,6 +341,7 @@
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
 				BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,
+				A90B96601DB5740500ACD756 /* ProfileTest.swift in Sources */,
 				D735D6B31DB575A300876261 /* TileTest.swift in Sources */,
 				ED6387611DB583E100FEEFC7 /* Seeker.swift in Sources */,
 				ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */,

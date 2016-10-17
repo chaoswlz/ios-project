@@ -21,9 +21,30 @@ class ios_projectTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSetMap() {
+        let game = Game()
+        game.setMap(mapid: 1)
+        XCTAssert(game.mapID == 1, "Pass")
+    }
+    
+    func testSetSettings() {
+        var settingsTest: Dictionary<String, String>!
+        settingsTest = ["key1": "value1"]
+        let game = Game()
+        game.setSettings(lobbySettings: settingsTest)
+        XCTAssert(game.settings == settingsTest, "Pass")
+    }
+    
+    func testSetPrepareTime() {
+        let game = Game()
+        game.setPrepareTime(time : 10)
+        XCTAssert(game.prepareTime == 10, "Pass")
+    }
+    
+    func testSetGameTime() {
+        let game = Game()
+        game.setGameTime(time: 20)
+        XCTAssert(game.gameTime == 20, "Pass")
     }
     
     func testPerformanceExample() {
@@ -34,3 +55,4 @@ class ios_projectTests: XCTestCase {
     }
     
 }
+

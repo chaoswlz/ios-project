@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import ios_project
 
 class TileTest: XCTestCase {
     
@@ -30,6 +31,18 @@ class TileTest: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testTile(){
+        
+        let tileId = 1
+        let tile = Tile(id: tileId)
+        
+        XCTAssertEqual(true, tile.getTileId() == 1)
+        XCTAssertEqual(false, tile.getTileId() == 2)
+        XCTAssertEqual(true, tile.getTileId() != 2)
+        
+    
     }
     
 }

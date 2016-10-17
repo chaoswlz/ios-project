@@ -36,5 +36,9 @@ class Tile : Equatable, Hashable {
     static func getTileSize() -> Int {
         return Tile.tileSize;
     }
+    
+    func getTileId() -> Int{
+        return tileId
+    }
 
 }

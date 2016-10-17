@@ -14,11 +14,12 @@
 		7A0A33BE1DB16D3000C2F2D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0A33BC1DB16D3000C2F2D1 /* LaunchScreen.storyboard */; };
 		7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */; };
 		7A0A33D41DB16D3100C2F2D1 /* ios_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */; };
-		A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D091DB42999009E9E16 /* Map.swift */; };
-		A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D0B1DB429AC009E9E16 /* Tile.swift */; };
 		7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */; };
 		921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
+		A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D091DB42999009E9E16 /* Map.swift */; };
+		A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D0B1DB429AC009E9E16 /* Tile.swift */; };
+		D735D6B31DB575A300876261 /* TileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735D6B21DB575A300876261 /* TileTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +53,11 @@
 		7A0A33CF1DB16D3100C2F2D1 /* ios-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_projectUITests.swift; sourceTree = "<group>"; };
 		7A0A33D51DB16D3100C2F2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A00A5D091DB42999009E9E16 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		A00A5D0B1DB429AC009E9E16 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lobbyTest.swift; sourceTree = "<group>"; };
 		921F0EB01DB17AD500C747D8 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
+		A00A5D091DB42999009E9E16 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		A00A5D0B1DB429AC009E9E16 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		D735D6B21DB575A300876261 /* TileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */,
 				7A0A33CA1DB16D3100C2F2D1 /* Info.plist */,
 				7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */,
+				D735D6B21DB575A300876261 /* TileTest.swift */,
 			);
 			path = "ios-projectTests";
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */,
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,
+				D735D6B31DB575A300876261 /* TileTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

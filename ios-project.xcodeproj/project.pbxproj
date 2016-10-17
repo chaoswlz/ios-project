@@ -14,6 +14,9 @@
 		7A0A33BE1DB16D3000C2F2D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0A33BC1DB16D3000C2F2D1 /* LaunchScreen.storyboard */; };
 		7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */; };
 		7A0A33D41DB16D3100C2F2D1 /* ios_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */; };
+		7A6D0C2A1DB56F5E00CE586E /* SkillsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */; };
+		7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87046F1DB17D4A009C6A6A /* Skill.swift */; };
+		7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */; };
 		7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */; };
 		921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
@@ -50,6 +53,9 @@
 		7A0A33CF1DB16D3100C2F2D1 /* ios-projectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-projectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0A33D31DB16D3100C2F2D1 /* ios_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_projectUITests.swift; sourceTree = "<group>"; };
 		7A0A33D51DB16D3100C2F2D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTest.swift; sourceTree = "<group>"; };
+		7A87046F1DB17D4A009C6A6A /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomGrid.swift; sourceTree = "<group>"; };
 		7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lobbyTest.swift; sourceTree = "<group>"; };
 		921F0EB01DB17AD500C747D8 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +108,7 @@
 		7A0A33B21DB16D3000C2F2D1 /* ios-project */ = {
 			isa = PBXGroup;
 			children = (
+				7A87046E1DB17D3C009C6A6A /* Skills */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
 				7A0A33B71DB16D3000C2F2D1 /* Main.storyboard */,
@@ -118,6 +125,7 @@
 			children = (
 				7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */,
 				7A0A33CA1DB16D3100C2F2D1 /* Info.plist */,
+				7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */,
 				7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */,
 			);
 			path = "ios-projectTests";
@@ -130,6 +138,15 @@
 				7A0A33D51DB16D3100C2F2D1 /* Info.plist */,
 			);
 			path = "ios-projectUITests";
+			sourceTree = "<group>";
+		};
+		7A87046E1DB17D3C009C6A6A /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				7A87046F1DB17D4A009C6A6A /* Skill.swift */,
+				7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */,
+			);
+			name = Skills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */,
+				7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
@@ -279,6 +298,7 @@
 				7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */,
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,
+				7A6D0C2A1DB56F5E00CE586E /* SkillsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

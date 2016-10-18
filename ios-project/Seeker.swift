@@ -8,6 +8,6 @@
 
 import Foundation
 
-class Seeker : Role {
+public class Seeker : Role {
     
 }

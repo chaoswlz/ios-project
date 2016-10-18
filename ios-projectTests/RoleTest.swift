@@ -28,8 +28,10 @@ class RoleTest: XCTestCase {
     
     func testRoles() {
         let testRole : Role = Seeker()
+        let testRole2 : Role = Hider()
         
         XCTAssertEqual(true, testRole is Seeker)
+        XCTAssertTrue(testRole2 is Hider)
+        XCTAssertFalse(testRole2 is Seeker)
     }
-    
 }

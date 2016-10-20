@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FC1DB87D0200AA074B /* PowerUp.swift */; };
+		0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */; };
+		0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */; };
+		0ACE4A031DB88AC300AA074B /* PowerUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */; };
 		24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A08B561DB5FA1E00B9CBBA /* Hider.swift */; };
 		24A08B581DB5FA1E00B9CBBA /* Hider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A08B561DB5FA1E00B9CBBA /* Hider.swift */; };
 		7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ACE49FC1DB87D0200AA074B /* PowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
+		0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiderInvisibility.swift; sourceTree = "<group>"; };
+		0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekerCompass.swift; sourceTree = "<group>"; };
+		0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpTest.swift; sourceTree = "<group>"; };
 		24A08B561DB5FA1E00B9CBBA /* Hider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hider.swift; sourceTree = "<group>"; };
 		7A0A33B01DB16D3000C2F2D1 /* ios-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ACE49FB1DB87C7A00AA074B /* Powerup */ = {
+			isa = PBXGroup;
+			children = (
+				0ACE49FC1DB87D0200AA074B /* PowerUp.swift */,
+				0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */,
+				0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */,
+			);
+			name = Powerup;
+			sourceTree = "<group>";
+		};
 		7A0A33A71DB16D3000C2F2D1 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +149,7 @@
 		7A0A33B21DB16D3000C2F2D1 /* ios-project */ = {
 			isa = PBXGroup;
 			children = (
+				0ACE49FB1DB87C7A00AA074B /* Powerup */,
 				ED6387651DB5843900FEEFC7 /* Roles */,
 				A90B965D1DB56DBD00ACD756 /* Profile.swift */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
@@ -158,6 +177,7 @@
 				D735D6B21DB575A300876261 /* TileTest.swift */,
 				BC0462851DB56F3E00C0D879 /* MapTests.swift */,
 				ED6387691DB5851300FEEFC7 /* RoleTest.swift */,
+				0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */,
 			);
 			path = "ios-projectTests";
 			sourceTree = "<group>";
@@ -326,14 +346,17 @@
 			files = (
 				7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */,
 				7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */,
+				0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
 				24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */,
 				A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */,
 				A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */,
+				0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
 				ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */,
 				A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */,
 				ED6387601DB583E100FEEFC7 /* Seeker.swift in Sources */,
+				0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +367,7 @@
 			files = (
 				7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */,
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
+				0ACE4A031DB88AC300AA074B /* PowerUpTest.swift in Sources */,
 				BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */,
 				24A08B581DB5FA1E00B9CBBA /* Hider.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,

@@ -21,6 +21,7 @@ class ZoomGrid : Skill {
     var skillCooldown: Int = 12000
     var skillDuration: Int = 120
     
+
     
     func skillDescription() -> String {
         return "Increases the ability you are able to zoom on the grid"

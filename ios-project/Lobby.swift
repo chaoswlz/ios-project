@@ -12,8 +12,8 @@ class Lobby{
     
     var settings : GameSetting
     //will need a variable to hold the list of player tuples (player, ready, seeker)
-    //will need a host/creater/user variable
-    
+    //will need a host/creater/user variable+
+
     init() {
         settings = GameSetting()
         // settings.edit() - Allow the user to select the settings for the game

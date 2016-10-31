@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FC1DB87D0200AA074B /* PowerUp.swift */; };
+		0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */; };
+		0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */; };
+		0ACE4A031DB88AC300AA074B /* PowerUpTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */; };
+		24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A08B561DB5FA1E00B9CBBA /* Hider.swift */; };
+		24A08B581DB5FA1E00B9CBBA /* Hider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A08B561DB5FA1E00B9CBBA /* Hider.swift */; };
 		7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */; };
 		7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */; };
 		7A0A33B91DB16D3000C2F2D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0A33B71DB16D3000C2F2D1 /* Main.storyboard */; };
@@ -23,6 +29,17 @@
 		923FC9381DBA92EC00B37E1C /* LevelUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC9371DBA92EC00B37E1C /* LevelUp.swift */; };
 		923FC93A1DBA9AD200B37E1C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC9391DBA9AD200B37E1C /* Player.swift */; };
 		923FC93C1DBA9F8B00B37E1C /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */; };
+		A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D091DB42999009E9E16 /* Map.swift */; };
+		A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00A5D0B1DB429AC009E9E16 /* Tile.swift */; };
+		A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965D1DB56DBD00ACD756 /* Profile.swift */; };
+		A90B96601DB5740500ACD756 /* ProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965F1DB5740500ACD756 /* ProfileTest.swift */; };
+		BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0462851DB56F3E00C0D879 /* MapTests.swift */; };
+		D735D6B31DB575A300876261 /* TileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D735D6B21DB575A300876261 /* TileTest.swift */; };
+		ED6387601DB583E100FEEFC7 /* Seeker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63875F1DB583E100FEEFC7 /* Seeker.swift */; };
+		ED6387611DB583E100FEEFC7 /* Seeker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63875F1DB583E100FEEFC7 /* Seeker.swift */; };
+		ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
+		ED6387681DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
+		ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387691DB5851300FEEFC7 /* RoleTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +60,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0ACE49FC1DB87D0200AA074B /* PowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
+		0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiderInvisibility.swift; sourceTree = "<group>"; };
+		0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekerCompass.swift; sourceTree = "<group>"; };
+		0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpTest.swift; sourceTree = "<group>"; };
+		24A08B561DB5FA1E00B9CBBA /* Hider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hider.swift; sourceTree = "<group>"; };
 		7A0A33B01DB16D3000C2F2D1 /* ios-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +86,15 @@
 		923FC9371DBA92EC00B37E1C /* LevelUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelUp.swift; sourceTree = "<group>"; };
 		923FC9391DBA9AD200B37E1C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		A00A5D091DB42999009E9E16 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		A00A5D0B1DB429AC009E9E16 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		A90B965D1DB56DBD00ACD756 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		A90B965F1DB5740500ACD756 /* ProfileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTest.swift; sourceTree = "<group>"; };
+		BC0462851DB56F3E00C0D879 /* MapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTests.swift; sourceTree = "<group>"; };
+		D735D6B21DB575A300876261 /* TileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileTest.swift; sourceTree = "<group>"; };
+		ED63875F1DB583E100FEEFC7 /* Seeker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seeker.swift; sourceTree = "<group>"; };
+		ED6387661DB5844C00FEEFC7 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		ED6387691DB5851300FEEFC7 /* RoleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +122,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ACE49FB1DB87C7A00AA074B /* Powerup */ = {
+			isa = PBXGroup;
+			children = (
+				0ACE49FC1DB87D0200AA074B /* PowerUp.swift */,
+				0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */,
+				0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */,
+			);
+			name = Powerup;
+			sourceTree = "<group>";
+		};
 		7A0A33A71DB16D3000C2F2D1 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				923FC9361DBA929D00B37E1C /* Level */,
+				0ACE49FB1DB87C7A00AA074B /* Powerup */,
+				ED6387651DB5843900FEEFC7 /* Roles */,
+				A90B965D1DB56DBD00ACD756 /* Profile.swift */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
@@ -122,6 +166,8 @@
 				7A0A33BA1DB16D3000C2F2D1 /* Assets.xcassets */,
 				7A0A33BC1DB16D3000C2F2D1 /* LaunchScreen.storyboard */,
 				7A0A33BF1DB16D3000C2F2D1 /* Info.plist */,
+				A00A5D091DB42999009E9E16 /* Map.swift */,
+				A00A5D0B1DB429AC009E9E16 /* Tile.swift */,
 				921F0EB01DB17AD500C747D8 /* Lobby.swift */,
 				923FC9391DBA9AD200B37E1C /* Player.swift */,
 			);
@@ -134,8 +180,13 @@
 				923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */,
 				7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */,
 				7A0A33CA1DB16D3100C2F2D1 /* Info.plist */,
+				A90B965F1DB5740500ACD756 /* ProfileTest.swift */,
 				7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */,
 				7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */,
+				D735D6B21DB575A300876261 /* TileTest.swift */,
+				BC0462851DB56F3E00C0D879 /* MapTests.swift */,
+				ED6387691DB5851300FEEFC7 /* RoleTest.swift */,
+				0ACE4A021DB88AC300AA074B /* PowerUpTest.swift */,
 			);
 			path = "ios-projectTests";
 			sourceTree = "<group>";
@@ -164,6 +215,14 @@
 				923FC9371DBA92EC00B37E1C /* LevelUp.swift */,
 			);
 			name = Level;
+		ED6387651DB5843900FEEFC7 /* Roles */ = {
+			isa = PBXGroup;
+			children = (
+				ED63875F1DB583E100FEEFC7 /* Seeker.swift */,
+				ED6387661DB5844C00FEEFC7 /* Role.swift */,
+				24A08B561DB5FA1E00B9CBBA /* Hider.swift */,
+			);
+			name = Roles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,9 +362,18 @@
 				7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */,
 				923FC9381DBA92EC00B37E1C /* LevelUp.swift in Sources */,
 				7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */,
+				0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
 				923FC93A1DBA9AD200B37E1C /* Player.swift in Sources */,
+				24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */,
+				A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */,
+				A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */,
+				0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
+				ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */,
+				A00A5D0C1DB429AC009E9E16 /* Tile.swift in Sources */,
+				ED6387601DB583E100FEEFC7 /* Seeker.swift in Sources */,
+				0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,8 +385,16 @@
 				923FC93C1DBA9F8B00B37E1C /* PlayerTests.swift in Sources */,
 				7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */,
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
+				0ACE4A031DB88AC300AA074B /* PowerUpTest.swift in Sources */,
+				BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */,
+				24A08B581DB5FA1E00B9CBBA /* Hider.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,
+				A90B96601DB5740500ACD756 /* ProfileTest.swift in Sources */,
+				D735D6B31DB575A300876261 /* TileTest.swift in Sources */,
+				ED6387611DB583E100FEEFC7 /* Seeker.swift in Sources */,
+				ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */,
 				7A6D0C2A1DB56F5E00CE586E /* SkillsTest.swift in Sources */,
+				ED6387681DB5844C00FEEFC7 /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

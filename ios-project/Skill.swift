@@ -11,6 +11,9 @@ import Foundation
 protocol Skill{
 
     
+    init(skillID: Int, skillName: String)
+
+    
     var skillID : Int { get set }
     var skillName : String { get set }
     

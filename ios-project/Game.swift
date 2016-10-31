@@ -71,9 +71,10 @@ public class Game{
     func checkHiders(){
         var count = 0;
         for player in players{
-            if(player.role is Hider){ //player doesnt have a role yet
+ /*           i f(player.role is Hider){ //player doesnt have a role yet
                 count += 1
             }
+*/
         }
         if (count == 0){
             quitGame()

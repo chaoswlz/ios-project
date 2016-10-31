@@ -10,7 +10,8 @@ import XCTest
 
 class lobbyTest: XCTestCase {
     
-    var lobby : Lobby = Lobby()
+    var host : Profile = Profile(userName: "UserName", tag: "TagName")
+    
     
     override func setUp() {
         super.setUp()
@@ -23,6 +24,7 @@ class lobbyTest: XCTestCase {
     }
     
     func test1_DefaultGameSettings(){
+        let lobby : Lobby = Lobby(host)
         
         XCTAssertEqual(lobby.settings.time, 6000)
         XCTAssertEqual(lobby.settings.maxPlayers, 1000)
@@ -32,6 +34,7 @@ class lobbyTest: XCTestCase {
     }
     
     func test2_EditGameSettings(){
+        let lobby : Lobby = Lobby(host)
         
         lobby.editSettings(0)
         
@@ -42,6 +45,7 @@ class lobbyTest: XCTestCase {
     }
     
     func test3_VariableValidation(){
+        let lobby : Lobby = Lobby(host)
         
         lobby.editSettings(0)
         
@@ -68,6 +72,14 @@ class lobbyTest: XCTestCase {
         XCTAssertEqual(lobby.settings.time, 50)
         XCTAssertEqual(lobby.settings.maxPlayers, 15)
         XCTAssertEqual(lobby.settings.minPlayers, 5)
+    }
+    
+    func test4_HostExists(){
+        let lobby : Lobby = Lobby(host)
+        
+        //this should be done programmatically so if this fails the code messed up
+        XCTAssertNotNil(lobby.host)
+        
     }
     
 }

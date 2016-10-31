@@ -11,11 +11,16 @@ import Foundation
 class Lobby{
     
     var settings : GameSetting
+    var host : Profile
+    var playerList:[(profile: Profile, isSeeker: Bool, isReady: Bool)] = []
+    
     //will need a variable to hold the list of player tuples (player, ready, seeker)
     //will need a host/creater/user variable
     
-    init() {
+    init(_ hostID : Profile) {
         settings = GameSetting()
+        host = hostID
+        playerList += [(profile: host, isSeeker: false, isReady: false)]
         // settings.edit() - Allow the user to select the settings for the game
     }
     
@@ -29,7 +34,9 @@ class Lobby{
     func lobbyStart(){}
     
     // Invites a player to the lobby
-    func lobbyInvite(_ playerId: String){}
+    func lobbyInvite(_ playerId: Profile){
+        playerList += [(profile: playerId, isSeeker: false, isReady: false)]
+    }
     
     // Kicks a player from the lobby
     func lobbyKick(_ playerId: String){}
@@ -53,15 +60,28 @@ class Lobby{
         
         // MARK: - Fields
         private var _time: Int
-        var time: Int{
+        var time: Int {
             get{
                 return _time
             }
-            set(newValue){
-                if (newValue > 0){
-                    _time = newValue
+            set(newValue) {
+                do{
+                    try setTime(newValue)
+                } catch {
+                    //do nothing
                 }
             }
+        }
+        
+        private func setTime(_ time : Int) throws {
+            if (time > 0){
+                _time = time
+            }
+            else
+            {
+                throw InvalidSettingError.invalidSetting
+            }
+
         }
         
         private var _maxPlayers: Int
@@ -121,6 +141,10 @@ class Lobby{
         
         class func genCode() -> String{
             return "1"
+        }
+        
+        enum InvalidSettingError: Error {
+            case invalidSetting
         }
         
     }

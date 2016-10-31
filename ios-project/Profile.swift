@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Profile {
+public class Profile {
     
     var userName: String = ""
     var tag: String = ""

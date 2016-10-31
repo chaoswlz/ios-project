@@ -20,6 +20,9 @@
 		7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */; };
 		921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
+		923FC9381DBA92EC00B37E1C /* LevelUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC9371DBA92EC00B37E1C /* LevelUp.swift */; };
+		923FC93A1DBA9AD200B37E1C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC9391DBA9AD200B37E1C /* Player.swift */; };
+		923FC93C1DBA9F8B00B37E1C /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomGrid.swift; sourceTree = "<group>"; };
 		7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lobbyTest.swift; sourceTree = "<group>"; };
 		921F0EB01DB17AD500C747D8 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
+		923FC9371DBA92EC00B37E1C /* LevelUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelUp.swift; sourceTree = "<group>"; };
+		923FC9391DBA9AD200B37E1C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 		7A0A33B21DB16D3000C2F2D1 /* ios-project */ = {
 			isa = PBXGroup;
 			children = (
+				923FC9361DBA929D00B37E1C /* Level */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
@@ -116,6 +123,7 @@
 				7A0A33BC1DB16D3000C2F2D1 /* LaunchScreen.storyboard */,
 				7A0A33BF1DB16D3000C2F2D1 /* Info.plist */,
 				921F0EB01DB17AD500C747D8 /* Lobby.swift */,
+				923FC9391DBA9AD200B37E1C /* Player.swift */,
 			);
 			path = "ios-project";
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 		7A0A33C71DB16D3100C2F2D1 /* ios-projectTests */ = {
 			isa = PBXGroup;
 			children = (
+				923FC93B1DBA9F8B00B37E1C /* PlayerTests.swift */,
 				7A0A33C81DB16D3100C2F2D1 /* ios_projectTests.swift */,
 				7A0A33CA1DB16D3100C2F2D1 /* Info.plist */,
 				7A6D0C291DB56F5E00CE586E /* SkillsTest.swift */,
@@ -147,6 +156,14 @@
 				7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */,
 			);
 			name = Skills;
+			sourceTree = "<group>";
+		};
+		923FC9361DBA929D00B37E1C /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				923FC9371DBA92EC00B37E1C /* LevelUp.swift */,
+			);
+			name = Level;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,8 +301,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */,
+				923FC9381DBA92EC00B37E1C /* LevelUp.swift in Sources */,
 				7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
+				923FC93A1DBA9AD200B37E1C /* Player.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
 			);
@@ -295,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923FC93C1DBA9F8B00B37E1C /* PlayerTests.swift in Sources */,
 				7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */,
 				921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */,
 				7A0A33C91DB16D3100C2F2D1 /* ios_projectTests.swift in Sources */,

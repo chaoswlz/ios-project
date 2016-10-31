@@ -1,15 +1,15 @@
 //
-//  ios_projectTests.swift
-//  ios-projectTests
+//  TileTest.swift
+//  ios-project
 //
-//  Created by Manjot Khalsa on 2016-10-14.
+//  Created by Mike Han on 2016-10-17.
 //  Copyright © 2016 Manjot. All rights reserved.
 //
 
 import XCTest
 @testable import ios_project
 
-class ios_projectTests: XCTestCase {
+class TileTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -31,6 +31,18 @@ class ios_projectTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testTile(){
+        
+        let tileId = 1
+        let tile = Tile(id: tileId)
+        
+        XCTAssertEqual(true, tile.getTileId() == 1)
+        XCTAssertEqual(false, tile.getTileId() == 2)
+        XCTAssertEqual(true, tile.getTileId() != 2)
+        
+    
     }
     
 }

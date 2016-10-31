@@ -1,15 +1,15 @@
 //
-//  ios_projectTests.swift
-//  ios-projectTests
+//  RoleTest.swift
+//  ios-project
 //
-//  Created by Manjot Khalsa on 2016-10-14.
+//  Created by Andrew Lukonin on 2016-10-17.
 //  Copyright © 2016 Manjot. All rights reserved.
 //
 
 import XCTest
 @testable import ios_project
 
-class ios_projectTests: XCTestCase {
+class RoleTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -26,11 +26,12 @@ class ios_projectTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testRoles() {
+        let testRole : Role = Seeker()
+        let testRole2 : Role = Hider()
+        
+        XCTAssertEqual(true, testRole is Seeker)
+        XCTAssertTrue(testRole2 is Hider)
+        XCTAssertFalse(testRole2 is Seeker)
     }
-    
 }

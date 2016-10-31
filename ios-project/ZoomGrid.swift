@@ -10,17 +10,23 @@ import Foundation
 
 class ZoomGrid : Skill {
     
-    var skillID: Int = 0
+    required init(skillID: Int, skillName : String){
+        self.skillID = skillID
+        self.skillName = skillName
+    }
+    
+    var skillID: Int
+    var skillName: String
     
     var skillPoints: Int = 0
     var skillLevel: Int = 0
     var skillMaxLevel: Int = 5
     var skillIsActive: Bool = false
     var skillEnergyCost: Int = 0
-    var skillName: String = "ZoomGrid"
     var skillCooldown: Int = 12000
     var skillDuration: Int = 120
     
+
     
     func skillDescription() -> String {
         return "Increases the ability you are able to zoom on the grid"

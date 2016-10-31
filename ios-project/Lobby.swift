@@ -42,10 +42,31 @@ class Lobby{
     func lobbyKick(_ playerId: String){}
     
     // Allows the host to change a role of a player in the lobby
-    func lobbyChangeRole(_ playerId: String, _ role: String){}
+    func lobbyChangeRole(_ playerId: Profile){
+        var index : Int = 0
+        var count : Int = 0
+        for temp in playerList{
+            if(temp.profile === playerId){
+                index = count
+            }
+            count += 1
+        }
+        playerList[index].isSeeker = !playerList[index].isSeeker
+    }
     
     // Toggles the current users ready status
-    func lobbyToggleReady(){}
+    func lobbyToggleReady(_ playerId: Profile){
+        var index : Int = 0
+        var count : Int = 0
+        for temp in playerList{
+            if(temp.profile === playerId){
+                index = count
+            }
+            count += 1
+        }
+        playerList[index].isReady = !playerList[index].isReady
+
+    }
     
     // Sets the ready status to false for all players in the lobby
     func lobbyResetReady(){}

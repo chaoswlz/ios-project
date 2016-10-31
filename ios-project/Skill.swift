@@ -9,6 +9,11 @@
 import Foundation
 
 protocol Skill{
+
+    
+    init(skillID: Int, skillName: String)
+
+    
     var skillID : Int { get set }
     var skillName : String { get set }
     
@@ -21,7 +26,7 @@ protocol Skill{
     var skillLevel : Int { get set }
     var skillIsActive : Bool { get set }
     var skillMaxLevel : Int { get set }
-    
+
     func skillDescription() -> String
     
     func skillLevelUp()

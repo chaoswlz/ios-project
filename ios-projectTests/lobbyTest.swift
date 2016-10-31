@@ -70,4 +70,16 @@ class lobbyTest: XCTestCase {
         XCTAssertEqual(lobby.settings.minPlayers, 5)
     }
     
+    func test4_JoinLobbyInvalidCode() {
+        let profile = Profile(userName: "UserName", tag: "GamerTag")
+        let lobby = Lobby.lobbyJoinLobby(profile, "")
+        XCTAssertNil(lobby)
+    }
+    
+    func test5_JoinLobbyValidCode() {
+        let profile = Profile(userName: "UserName", tag: "GamerTag")
+        let lobby = Lobby.lobbyJoinLobby(profile, "1234")
+        XCTAssertNotNil(lobby)
+    }
+    
 }

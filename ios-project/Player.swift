@@ -7,20 +7,20 @@
 //
 
 import Foundation
-
+import CoreLocation
 public class Player {
     
     var playerName : String
     var level      : Int
     var skill      : Skill
-    
-    
+    var locationManager = CLLocationManager()
     
     public init( _ n : String){
         self.playerName = n
         self.level = 1
         self.skill = ZoomGrid(skillID: 1,skillName: "ZoomGrid")
     }
+    
     
     public init( _ n : String, _ l : Int){
         self.playerName = n
@@ -36,5 +36,5 @@ public class Player {
         return "Player is max level"
     }
     
-    
+
 }

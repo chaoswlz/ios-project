@@ -157,12 +157,12 @@
 		7A0A33B21DB16D3000C2F2D1 /* ios-project */ = {
 			isa = PBXGroup;
 			children = (
-				BCE4DEFC1DC7EC92001E2F34 /* Game.swift */,
-				BCE4DEFE1DC7EC92001E2F34 /* Player.swift */,
 				0ACE49FB1DB87C7A00AA074B /* Powerup */,
 				ED6387651DB5843900FEEFC7 /* Roles */,
-				A90B965D1DB56DBD00ACD756 /* Profile.swift */,
 				7A87046E1DB17D3C009C6A6A /* Skills */,
+				BCE4DEFC1DC7EC92001E2F34 /* Game.swift */,
+				BCE4DEFE1DC7EC92001E2F34 /* Player.swift */,
+				A90B965D1DB56DBD00ACD756 /* Profile.swift */,
 				7A0A33B31DB16D3000C2F2D1 /* AppDelegate.swift */,
 				7A0A33B51DB16D3000C2F2D1 /* ViewController.swift */,
 				7A0A33B71DB16D3000C2F2D1 /* Main.storyboard */,

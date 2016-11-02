@@ -9,6 +9,7 @@
 import Foundation
 
 class Lobby{
+    var PlayerList : [Player]? = nil
     
     var settings : GameSetting
     //will need a variable to hold the list of player tuples (player, ready, seeker)

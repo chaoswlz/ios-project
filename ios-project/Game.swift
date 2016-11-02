@@ -11,18 +11,27 @@ import Foundation
 public class Game{
     var mapID: Int!
     var settings: Dictionary<String, String>!
-    //var players: [Player]
+    var players: [Player]
     var lobby: Lobby!
     //var lobbySettings = lobby.getSetting()
     
     var prepareTime: Int!
+    var startTime: Int!
     var gameTime: Int!
+    var currentTime: Int!
     //var result: [Player : String]
     var OutOfBoundsTimer: Timer!
     
-    func startGame(){
+    
+    //start game
+    init(PlayerList players: [Player]){
+        self.players = players
+        startTime = 0;
+        gameTime = 2;
         
     }
+    
+
     
     func getMapID() -> Int{
         return mapID
@@ -40,11 +49,9 @@ public class Game{
         return gameTime
     }
     
-    //func getPlayers() -> [Player]{
-    //    return players
-    //}
-    
-    
+    func getPlayers() -> [Player]{
+        return players
+    }
     
     func setMap(mapid : Int){
         mapID = mapid
@@ -55,17 +62,42 @@ public class Game{
     }
     
     
-    func setPrepareTime(time: Int){
-        prepareTime =  time
+    //Checks for end game
+    func getPlayerCount(){
+        if(players.count<=1){ //refactor to check if player array length instead?
+            quitGame();
+        }
+    }
+    func checkHiders(){
+        var count = 0;
+        for player in players{
+ /*           i f(player.role is Hider){ //player doesnt have a role yet
+                count += 1
+            }
+*/
+        }
+        if (count == 0){
+            quitGame()
+        }
     }
     
-    func setGameTime(time: Int){
-        gameTime = time
+    func checkTime(){
+        if(currentTime >= (startTime + gameTime)){
+            quitGame()
+        }
     }
     
-    //func setPlayers(players: [Player]){
+    func quitGame(){
+        //save stuff
+        //reward player
+        //return to lobby (killing game)
+        
+    }
     
-    //}
+    func rewardPlayer(_ Player : Player){
+        
+    }
+    
     
     //func setResult(players: Player){
     

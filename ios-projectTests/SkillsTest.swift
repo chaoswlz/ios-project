@@ -22,7 +22,7 @@ class SkillsTest: XCTestCase {
     }
     
     func testZoomGrid() {
-        let zoomgrid = ZoomGrid()
+        let zoomgrid = ZoomGrid(skillID: 1,skillName: "ZoomGrid")
         // testing description
         XCTAssertEqual(zoomgrid.skillDescription(), "Increases the ability you are able to zoom on the grid")
         

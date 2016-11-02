@@ -20,11 +20,11 @@ class LevelUp{
         _skillMaxLevel = skill.skillMaxLevel
     }
     
-    func chkLevel(skill : Skill) -> String {
+    func chkLevel() -> String {
 
         if ( _skillMaxLevel  != _skillLevel)
         {
-            skill.skillLevelUp()
+            _skill.skillLevelUp()
             return "Leveled Up!"
         }
     

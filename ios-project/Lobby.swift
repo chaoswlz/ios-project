@@ -9,6 +9,7 @@
 import Foundation
 
 class Lobby{
+    var PlayerList : [Player]? = nil
     
     var settings : GameSetting
     var host : Profile

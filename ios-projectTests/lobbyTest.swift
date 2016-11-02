@@ -82,4 +82,49 @@ class lobbyTest: XCTestCase {
         
     }
     
+    func test5_PlayerListContainsHost(){
+        let lobby : Lobby = Lobby(host)
+        
+        XCTAssertEqual(lobby.playerList.count, 1)
+    }
+    
+    func test6_InviteOrKickPlayerToLobbyList(){
+        let lobby : Lobby = Lobby(host)
+        let player : Profile = Profile(userName: "test", tag: "test")
+        
+        XCTAssertEqual(lobby.playerList.count, 1)
+        
+        lobby.lobbyInvite(player)
+        
+        XCTAssertEqual(lobby.playerList.count, 2)
+        
+        lobby.lobbyKick(player)
+        
+        XCTAssertEqual(lobby.playerList.count, 1)
+    }
+    
+    func test7_ToggleReadyAndResetReady(){
+        let lobby : Lobby = Lobby(host)
+        let player : Profile = Profile(userName: "test", tag: "test")
+        let player2 : Profile = Profile(userName: "test2", tag: "test2")
+        
+        lobby.lobbyInvite(player)
+        lobby.lobbyInvite(player2)
+        
+        XCTAssertEqual(lobby.playerList[1].isReady, false)
+        
+        lobby.lobbyToggleReady(player)
+        lobby.lobbyToggleReady(player2)
+        lobby.lobbyToggleReady(host)
+        
+        XCTAssertTrue(lobby.playerList[0].isReady)
+        XCTAssertTrue(lobby.playerList[1].isReady)
+
+        lobby.lobbyResetReady()
+        
+        XCTAssertFalse(lobby.playerList[0].isReady)
+        XCTAssertFalse(lobby.playerList[1].isReady)
+
+    }
+    
 }

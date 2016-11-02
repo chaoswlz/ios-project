@@ -9,11 +9,10 @@
 import Foundation
 
 class Lobby{
-    var PlayerList : [Player]? = nil
     
     var settings : GameSetting
     var host : Profile
-    var playerList:[(profile: Profile, isSeeker: Bool, isReady: Bool)] = []
+    var playerList:[LobbyUser]
     
     //will need a variable to hold the list of player tuples (player, ready, seeker)
     //will need a host/creater/user variable
@@ -21,7 +20,7 @@ class Lobby{
     init(_ hostID : Profile) {
         settings = GameSetting()
         host = hostID
-        playerList += [(profile: host, isSeeker: false, isReady: false)]
+        playerList = [LobbyUser(hostID)]
         // settings.edit() - Allow the user to select the settings for the game
     }
     
@@ -36,11 +35,21 @@ class Lobby{
     
     // Invites a player to the lobby
     func lobbyInvite(_ playerId: Profile){
-        playerList += [(profile: playerId, isSeeker: false, isReady: false)]
+        playerList.append(LobbyUser(playerId))
     }
     
     // Kicks a player from the lobby
-    func lobbyKick(_ playerId: String){}
+    func lobbyKick(_ playerId: Profile){
+        var index : Int = 0
+        var count : Int = 0
+        for temp in playerList{
+            if(temp.profile === playerId){
+                index = count
+            }
+            count += 1
+        }
+        playerList.remove(at: index)
+    }
     
     // Allows the host to change a role of a player in the lobby
     func lobbyChangeRole(_ playerId: Profile){
@@ -70,13 +79,14 @@ class Lobby{
     }
     
     // Sets the ready status to false for all players in the lobby
-    func lobbyResetReady(){}
+    func lobbyResetReady(){
+        for i in 0 ..< playerList.count{
+            playerList[i].isReady = false
+        }
+    }
     
     // Closes the lobby
     func lobbyCloseLobby(){}
-    
-    //will need a function to add a player to the players list when that exists
-    
     
     class GameSetting{
         
@@ -167,6 +177,19 @@ class Lobby{
         
         enum InvalidSettingError: Error {
             case invalidSetting
+        }
+        
+    }
+    
+    class LobbyUser{
+        var profile : Profile
+        var isReady : Bool
+        var isSeeker : Bool
+        
+        init(_ playerId: Profile) {
+            profile = playerId
+            isReady = false
+            isSeeker = false
         }
         
     }

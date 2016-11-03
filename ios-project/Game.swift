@@ -11,27 +11,68 @@ import Foundation
 public class Game{
     var mapID: Int!
     var settings: Dictionary<String, String>!
-    var players: [Player]
+    var currentPlayers: [Player]
     var lobby: Lobby!
     //var lobbySettings = lobby.getSetting()
     
     var prepareTime: Int!
-    var startTime: Int!
     var gameTime: Int!
-    var currentTime: Int!
+    var elapsedTime: Int!
     //var result: [Player : String]
     var OutOfBoundsTimer: Timer!
     
+    var gameRunning = false
+    
+    //for testing
+    public var triggerPlayerCount = false
+    public var triggerGameTime = false
+    public var triggerZeroHiders = false
+    public var triggerHostCancelled = false
+    var hidersCount = 0
     
     //start game
-    init(PlayerList players: [Player]){
-        self.players = players
-        startTime = 0;
-        gameTime = 2;
+    init(players: [Player], gameTime: Int){
         
+        currentPlayers = players
+        self.gameTime = gameTime;
     }
     
-
+    func startGame(){
+        gameRunning = true
+        var currentTime = 0
+        
+        while (gameRunning){
+            currentTime += 1
+            print("time incremented")
+            //TODO: implement function to update game variables
+            
+            // check if game should end
+            let currentPlayerCount = getCurrentPlayersCount() 
+//            let currentHidersCount = getCurrentHidersCount() // roles not implemented, using workaround below
+            let hostCancelled = false // not implemented, need multithreading?
+            let outOfTime = checkOutOfTime(currentTime: (currentTime))
+            
+            // for testing
+            let currentHidersCount = hidersCount
+            
+            triggerGameTime = outOfTime
+            triggerPlayerCount = currentPlayerCount <= 1 ? true : false
+            triggerZeroHiders = currentHidersCount == 0 ? true : false
+            triggerHostCancelled = hostCancelled
+            // end for testing
+            
+            if (currentPlayerCount <= 1 || currentHidersCount == 0 || outOfTime || hostCancelled){
+                gameRunning = false
+            } else {
+                sleep(1)
+            }
+        }
+        quitGame()
+    }
+    
+    func isGameRunning() -> Bool {
+        return gameRunning
+    }
     
     func getMapID() -> Int{
         return mapID
@@ -49,8 +90,8 @@ public class Game{
         return gameTime
     }
     
-    func getPlayers() -> [Player]{
-        return players
+    func getCurrentPlayers() -> [Player]{
+        return currentPlayers
     }
     
     func setMap(mapid : Int){
@@ -62,36 +103,38 @@ public class Game{
     }
     
     
-    //Checks for end game
-    func getPlayerCount(){
-        if(players.count<=1){ //refactor to check if player array length instead?
-            quitGame();
-        }
+    func getCurrentPlayersCount() -> Int{
+        return currentPlayers.count;
     }
-    func checkHiders(){
+    func getCurrentHidersCount() -> Int{
         var count = 0;
-        for player in players{
- /*           i f(player.role is Hider){ //player doesnt have a role yet
-                count += 1
-            }
-*/
-        }
-        if (count == 0){
-            quitGame()
-        }
+        
+        // players dont have roles yet!
+        
+//        for player in players{
+//            if(player.role is Hider){
+//                count += 1
+//            }
+//        }
+        
+        return count;
     }
     
-    func checkTime(){
-        if(currentTime >= (startTime + gameTime)){
-            quitGame()
-        }
+    //for testing
+    func setHidersCount(hiders: Int) {
+        hidersCount = hiders
+    }
+    
+    
+    func checkOutOfTime(currentTime: Int) -> Bool{
+        return currentTime >= gameTime
     }
     
     func quitGame(){
+        //send alert that game is over
         //save stuff
         //reward player
         //return to lobby (killing game)
-        
     }
     
     func rewardPlayer(_ Player : Player){
@@ -99,9 +142,10 @@ public class Game{
     }
     
     
-    //func setResult(players: Player){
+    func setResult(players: Player){
     
-    //}
+    }
+    
     /*
      func testOutOfBounds(_: player,_ map)-> String{
      var x = player.location.getX()

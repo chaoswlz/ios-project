@@ -29,7 +29,9 @@ protocol Skill{
 
     func skillDescription() -> String
     
-    func skillLevelUp()
+    //func skillLevelUp()
+    
+    func checkLevel()
     
     func skillIsMax() -> Bool
 }

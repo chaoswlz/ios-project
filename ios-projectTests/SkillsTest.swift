@@ -29,33 +29,33 @@ class SkillsTest: XCTestCase {
         // testing skillIsMax to check if the skill has been upgraded to max level already
         XCTAssertEqual(zoomgrid.skillIsMax(), false)
         
-        zoomgrid.skillLevelUp()
+        zoomgrid.checkLevel()
         
         var actual = (zoomgrid.skillLevel, zoomgrid.skillCooldown, zoomgrid.skillDuration, zoomgrid.skillPoints)
         let expected1 = (1, 11900, 140, 1)
         testLevelUp(expected1, actual)
         XCTAssertEqual(zoomgrid.skillIsMax(), false)
         
-        zoomgrid.skillLevelUp()
+        zoomgrid.checkLevel()
         actual = (zoomgrid.skillLevel, zoomgrid.skillCooldown, zoomgrid.skillDuration, zoomgrid.skillPoints)
         let expected2 = (2, 11800, 160, 2)
         testLevelUp(expected2, actual)
         
         
         
-        zoomgrid.skillLevelUp()
+        zoomgrid.checkLevel()
         actual = (zoomgrid.skillLevel, zoomgrid.skillCooldown, zoomgrid.skillDuration, zoomgrid.skillPoints)
         let expected3 = (3, 11700, 180, 3)
         testLevelUp(expected3, actual)
         
-        zoomgrid.skillLevelUp()
+        zoomgrid.checkLevel()
         actual = (zoomgrid.skillLevel, zoomgrid.skillCooldown, zoomgrid.skillDuration, zoomgrid.skillPoints)
         let expected4 = (4, 11600, 200, 4)
         testLevelUp(expected4, actual)
         
         XCTAssertEqual(zoomgrid.skillIsMax(), false)
         
-        zoomgrid.skillLevelUp()
+        zoomgrid.checkLevel()
         actual = (zoomgrid.skillLevel, zoomgrid.skillCooldown, zoomgrid.skillDuration, zoomgrid.skillPoints)
         let expected5 = (5, 11500, 220, 5)
         testLevelUp(expected5, actual)

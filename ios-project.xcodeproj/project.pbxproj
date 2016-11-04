@@ -25,6 +25,7 @@
 		7A8704701DB17D4A009C6A6A /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87046F1DB17D4A009C6A6A /* Skill.swift */; };
 		7A8704741DB17D7B009C6A6A /* ZoomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */; };
 		7B2D5A751DB56DFA00F76A7E /* lobbyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */; };
+		7B834CAD1DCD0217005F597C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B834CAC1DCD0217005F597C /* GameViewController.swift */; };
 		921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		921F0EB21DB17AD500C747D8 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F0EB01DB17AD500C747D8 /* Lobby.swift */; };
 		92F4957F1DC7F07900218691 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965D1DB56DBD00ACD756 /* Profile.swift */; };
@@ -87,6 +88,7 @@
 		7A87046F1DB17D4A009C6A6A /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		7A8704731DB17D7B009C6A6A /* ZoomGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomGrid.swift; sourceTree = "<group>"; };
 		7B2D5A741DB56DFA00F76A7E /* lobbyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lobbyTest.swift; sourceTree = "<group>"; };
+		7B834CAC1DCD0217005F597C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		921F0EB01DB17AD500C747D8 /* Lobby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		A00A5D091DB42999009E9E16 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A00A5D0B1DB429AC009E9E16 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				A00A5D091DB42999009E9E16 /* Map.swift */,
 				A00A5D0B1DB429AC009E9E16 /* Tile.swift */,
 				921F0EB01DB17AD500C747D8 /* Lobby.swift */,
+				7B834CAC1DCD0217005F597C /* GameViewController.swift */,
 			);
 			path = "ios-project";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				BCE4DF001DC7EC92001E2F34 /* LevelUp.swift in Sources */,
 				24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */,
 				A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */,
+				7B834CAD1DCD0217005F597C /* GameViewController.swift in Sources */,
 				A00A5D0A1DB42999009E9E16 /* Map.swift in Sources */,
 				0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */,
 				7A0A33B41DB16D3000C2F2D1 /* AppDelegate.swift in Sources */,

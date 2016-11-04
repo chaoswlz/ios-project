@@ -10,18 +10,42 @@ import Foundation
 
 class HiderInvisibility : PowerUp {
 
-    var name : String        = "Invisibility"
- 
-    var role : String        = "Hider"
-
-    var duration : Int       = 60 * 3; // 3 mins
+    static let DEFAULT_NAME  = "Invisibility"
+    static let DEFAULT_ROLE  = "Hider"
+    static let DEFAULT_DESC  = "Keeps you hidden from seekers for a period of time"
     
-    var expireTime : Int     = 60 * 5;
+    var name : String
+    var role : String
+    var duration : Int
+    var expireTime : Int
+    var energyCost : Int
+    var isActive : Bool
+    var description : String
     
-    var energyCost : Int     = 500;
+    required init(){
+        self.name        = HiderInvisibility.DEFAULT_NAME
+        self.role        = HiderInvisibility.DEFAULT_ROLE
+        self.description = HiderInvisibility.DEFAULT_DESC
+        
+        self.duration    = 60 * 3
+        self.expireTime  = 60 * 3
+        self.energyCost  = 60 * 3
+        self.isActive    = false
+    }
     
-    var isActive : Bool      = false;
-    
-    var description : String = "Keeps you hidden from seekers for a period of time"
+    required init(duration: Int, expireTime: Int, energyCost: Int, isActive: Bool) throws{
+        self.name        = HiderInvisibility.DEFAULT_NAME
+        self.role        = HiderInvisibility.DEFAULT_ROLE
+        self.description = HiderInvisibility.DEFAULT_DESC
+        
+        if(duration <= 0 || expireTime <= 0 || energyCost <= 0){
+            throw PowerUpError.illegalArgument
+        }else{
+            self.duration    = duration
+            self.expireTime  = expireTime
+            self.energyCost  = energyCost
+            self.isActive    = isActive
+        }
+    }
     
 }

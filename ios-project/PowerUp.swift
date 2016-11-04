@@ -31,4 +31,8 @@ protocol PowerUp{
     // brief description of the powerup
     var description : String { get set }
     
+    init()
+    
+    init(duration: Int, expireTime: Int, energyCost: Int, isActive: Bool) throws
+    
 }

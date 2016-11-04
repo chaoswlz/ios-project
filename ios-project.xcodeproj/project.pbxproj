@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A71E4461DCC821F0014AC07 /* PowerUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71E4451DCC821F0014AC07 /* PowerUpError.swift */; };
 		0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FC1DB87D0200AA074B /* PowerUp.swift */; };
 		0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */; };
 		0ACE4A011DB889DB00AA074B /* SeekerCompass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A71E4451DCC821F0014AC07 /* PowerUpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpError.swift; sourceTree = "<group>"; };
 		0ACE49FC1DB87D0200AA074B /* PowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
 		0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiderInvisibility.swift; sourceTree = "<group>"; };
 		0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekerCompass.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				0ACE49FC1DB87D0200AA074B /* PowerUp.swift */,
 				0ACE49FE1DB8858200AA074B /* HiderInvisibility.swift */,
 				0ACE4A001DB889DB00AA074B /* SeekerCompass.swift */,
+				0A71E4451DCC821F0014AC07 /* PowerUpError.swift */,
 			);
 			name = Powerup;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				0ACE49FD1DB87D0200AA074B /* PowerUp.swift in Sources */,
 				BCE4DF011DC7EC92001E2F34 /* Player.swift in Sources */,
 				921F0EB11DB17AD500C747D8 /* Lobby.swift in Sources */,
+				0A71E4461DCC821F0014AC07 /* PowerUpError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,10 @@ public class Game{
     public var triggerHostCancelled = false
     var hidersCount = 0
     
+    public enum errorType: Error {
+        case negExpGain
+    }
+    
     //start game
     init(players: [Player], gameTime: Int){
         
@@ -42,7 +46,6 @@ public class Game{
         var currentTime = 0
         
         while (gameRunning){
-            currentTime += 1
             print("time incremented")
             //TODO: implement function to update game variables
             
@@ -64,6 +67,7 @@ public class Game{
             if (currentPlayerCount <= 1 || currentHidersCount == 0 || outOfTime || hostCancelled){
                 gameRunning = false
             } else {
+                currentTime += 1
                 sleep(1)
             }
         }
@@ -123,6 +127,13 @@ public class Game{
     //for testing
     func setHidersCount(hiders: Int) {
         hidersCount = hiders
+    }
+    
+    //for testing
+    func setExp(player: Player, exp: Int) throws {
+        if (exp < 0){
+            throw errorType.negExpGain
+        }
     }
     
     

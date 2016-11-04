@@ -22,16 +22,18 @@ class Menu
     
     func menuJoinLobby(_ gameCode: String)
     {
-        let lobby: Lobby
+        var lobby: Lobby? = nil
         
         do {
             try lobby = Lobby.lobbyJoinLobby(currentProfile, gameCode)!
         } catch Lobby.LobbyJoinErrors.LobbyFull {
-        
+            // Lobby is full, display appropriate message
+        } catch {
+            // default catch all other erros
         }
         
         if (lobby == nil) {
-            return
+            return // lobby was not found
         } else {
             // TODO: change screen ( lobby )
         }

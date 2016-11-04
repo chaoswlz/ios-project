@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 class LevelUp{
     // this class is example of just leveling up ZoomGrid
-    internal var _skill : Skill
+    internal let _skill : Skill
     internal let _skillLevel : Int
     internal let _skillMaxLevel : Int
     
@@ -25,12 +24,7 @@ class LevelUp{
 
         if ( _skillMaxLevel  != _skillLevel)
         {
-                        
-            _skill.skillLevel += 1
-            _skill.skillCooldown -= 100
-            _skill.skillDuration += 20
-            _skill.skillPoints += 1
-            
+            _skill.skillLevelUp()
             return "Leveled Up!"
         }
     

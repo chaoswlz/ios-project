@@ -12,6 +12,10 @@ import MapKit
 class GameViewController: UIViewController {
 
     @IBOutlet weak var MapView: MKMapView!
+    let notificationCentre = NotificationCenter.default
+    let locationManager = CLLocationManager()
+    var locationUpdatedObserver : AnyObject?
+    var temppin : MKPointAnnotation = MKPointAnnotation()
     
     var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
     
@@ -21,23 +25,43 @@ class GameViewController: UIViewController {
         // Center map on Map coordinates
         MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
         
-        // Disable user interaction 
+        //Disable user interaction
         MapView.isZoomEnabled = false;
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-        // Draw pins 
-        var pinArray : [MKAnnotation] = []
-        for i in 0...5 {
-            for j in 0...5 {
-                let templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.247815 + (Double(j)/750), longitude: -123.004096 + (Double(i)/750))
-                let temppin : MKPointAnnotation = MKPointAnnotation()
-                temppin.coordinate = templocation
-                pinArray.append(temppin)
-            }
+        var templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2508484, longitude: -123.0040408)
+        temppin = MKPointAnnotation()
+        
+        locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
+                                                                 object: nil,
+                                                                 queue: nil)
+        {
+            (note) in
+            let location = Notifications.getLocation(note)
             
+            if let location = location
+            {
+                let lat = location.coordinate.latitude
+                let long = location.coordinate.longitude
+                self.MapView.removeAnnotation(self.temppin)
+                
+                templocation  = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                // DEBUG
+                print(lat.description + " " + long.description)
+                // END OF DEBUG
+                
+                self.temppin = MKPointAnnotation()
+                self.temppin.coordinate = templocation
+                
+                self.MapView.addAnnotation(self.temppin)
+            }
         }
-        MapView.addAnnotations(pinArray)
+        
+        
+        // this sends the request to start fetching the location
+        Notifications.postGpsToggled(self, toggle: true)
     }
 
     override func didReceiveMemoryWarning() {

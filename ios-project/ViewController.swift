@@ -13,33 +13,34 @@ import MapKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var MyMap: MKMapView!
+    let notificationCentre = NotificationCenter.default
+    let locationManager = CLLocationManager()
+    var locationUpdatedObserver : AnyObject?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        let location : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2827, longitude: -123.1207)
-//        let pin : MKPointAnnotation = MKPointAnnotation()
-//        let location2 : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2837, longitude: -123.1207)
-//        let pin2 : MKPointAnnotation = MKPointAnnotation()
-//        let location3 : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2847, longitude: -123.1207)
-//        let pin3 : MKPointAnnotation = MKPointAnnotation()
-        //let pin : MKPinAnnotationView = MKPinAnnotationView()
-        
-//        pin.coordinate = location
-//        pin2.coordinate = location2
-//        pin3.coordinate = location3
-        
-        var pinArray : [MKAnnotation] = []
-        for i in 0...5 {
-            for j in 0...5 {
-                let templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2827 + (Double(j)/750), longitude: -123.1207 + (Double(i)/750))
+        locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
+                                                                 object: nil,
+                                                                 queue: nil)
+        {
+            (note) in
+            let location = Notifications.getLocation(note)
+            
+            if let location = location
+            {
+                let lat = location.coordinate.latitude
+                let long = location.coordinate.longitude
+                let templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 let temppin : MKPointAnnotation = MKPointAnnotation()
                 temppin.coordinate = templocation
-                pinArray.append(temppin)
+                
+                self.MyMap.addAnnotation(temppin)
             }
-            
         }
-        MyMap.addAnnotations(pinArray)
+        Notifications.postGpsToggled(self, toggle: true)
         
         //CLLocationCoordinate2D(51, -0.1)
         

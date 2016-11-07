@@ -25,6 +25,19 @@ class GameViewController: UIViewController {
         MapView.isZoomEnabled = false;
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
+        
+        // Draw pins 
+        var pinArray : [MKAnnotation] = []
+        for i in 0...5 {
+            for j in 0...5 {
+                let templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.247815 + (Double(j)/750), longitude: -123.004096 + (Double(i)/750))
+                let temppin : MKPointAnnotation = MKPointAnnotation()
+                temppin.coordinate = templocation
+                pinArray.append(temppin)
+            }
+            
+        }
+        MapView.addAnnotations(pinArray)
     }
 
     override func didReceiveMemoryWarning() {

@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+import Firebase
+
 class GameViewController: UIViewController {
 
     @IBOutlet weak var MapView: MKMapView!
@@ -16,6 +18,14 @@ class GameViewController: UIViewController {
     let locationManager = CLLocationManager()
     var locationUpdatedObserver : AnyObject?
     var temppin : MKPointAnnotation = MKPointAnnotation()
+    
+    var db: FIRDatabaseReference!
+    
+    var locations: [FIRDataSnapshot]! = []
+    
+    let username = "hello"
+    
+    fileprivate var _refHandle: FIRDatabaseHandle!
     
     var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
     
@@ -30,7 +40,7 @@ class GameViewController: UIViewController {
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-        var templocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2508484, longitude: -123.0040408)
+        var tempLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2508484, longitude: -123.0040408)
         temppin = MKPointAnnotation()
         
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
@@ -46,15 +56,24 @@ class GameViewController: UIViewController {
                 let long = location.coordinate.longitude
                 self.MapView.removeAnnotation(self.temppin)
                 
-                templocation  = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                // SETTING UP ARRAY OF VALUES TO BE POSTED TO DB
+                let mdata : [String: Double] = [
+                    "lat": lat, "long": long
+                ]
+                
+                // POSTING TO DB
+                self.db.child("locations").childByAutoId().setValue(mdata)
+                
+                // POSTING LAT LONG TO MAP
+                tempLocation  = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 
                 // DEBUG
                 print(lat.description + " " + long.description)
                 // END OF DEBUG
                 
                 self.temppin = MKPointAnnotation()
-                self.temppin.coordinate = templocation
-                
+                self.temppin.coordinate = tempLocation
+            
                 self.MapView.addAnnotation(self.temppin)
             }
         }
@@ -62,7 +81,21 @@ class GameViewController: UIViewController {
         
         // this sends the request to start fetching the location
         Notifications.postGpsToggled(self, toggle: true)
+        
+        // init db
+        db = FIRDatabase.database().reference()
+        
+        _refHandle = self.db.child("locations").observe(.childAdded,
+                                                        with: { [weak self] (snapshot) -> Void in
+                                                            guard let strongSelf = self else { return }
+                                                            strongSelf.locations.append(snapshot) })
     }
+    
+    func postLocationToMap(templocation: CLLocationCoordinate2D) {
+        
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

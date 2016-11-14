@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -46,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         else {
             locationManager.stopUpdatingLocation()
         }
+        
+        FIRApp.configure()
+        
         return true
     }
     

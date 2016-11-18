@@ -19,28 +19,36 @@ class GameViewController: UIViewController {
     var locationUpdatedObserver : AnyObject?
     var temppin : MKPointAnnotation = MKPointAnnotation()
     
+    var tempLocation : CLLocationCoordinate2D?
+    var map : Map?
+    
+    
     var db: FIRDatabaseReference!
     
     var locations: [FIRDataSnapshot]! = []
     
     let username = "hello"
     
+    var lat = 0.0
+    var long = 0.0
+    var mapRadius = 0.00486
+    
     fileprivate var _refHandle: FIRDatabaseHandle!
     
-    var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
+//    var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
         // Center map on Map coordinates
-        MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
+        //MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
         
         //Disable user interaction
         MapView.isZoomEnabled = false;
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-        var tempLocation : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 49.2508484, longitude: -123.0040408)
         temppin = MKPointAnnotation()
         
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
@@ -52,37 +60,44 @@ class GameViewController: UIViewController {
             
             if let location = location
             {
-                let lat = location.coordinate.latitude
-                let long = location.coordinate.longitude
+                self.lat = location.coordinate.latitude
+                self.long = location.coordinate.longitude
                 self.MapView.removeAnnotation(self.temppin)
                 
                 // SETTING UP ARRAY OF VALUES TO BE POSTED TO DB
                 let mdata : [String: Double] = [
-                    "lat": lat, "long": long
+                    "lat": self.lat, "long": self.long
                 ]
                 
                 // POSTING TO DB
                 self.db.child("locations").childByAutoId().setValue(mdata)
                 
                 // POSTING LAT LONG TO MAP
-                tempLocation  = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                self.tempLocation  = CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
                 
                 // DEBUG
-                print(lat.description + " " + long.description)
+                print(self.lat.description + " " + self.long.description)
                 // END OF DEBUG
                 
                 self.temppin = MKPointAnnotation()
-                self.temppin.coordinate = tempLocation
+                self.temppin.coordinate = self.tempLocation!
             
+                self.map = Map(topCorner: MKMapPoint(x: self.lat - self.mapRadius, y: self.long - self.mapRadius), botCorner: MKMapPoint(x: self.lat + self.mapRadius, y: self.long + self.mapRadius), tileSize: 1)
+                
+                self.MapView.setRegion(self.convertRectToRegion(rect: (self.map?.mapActual)!), animated: true)
+                
                 self.MapView.addAnnotation(self.temppin)
+                
+                
+               
             }
         }
         
         
-        // this sends the request to start fetching the location
+         //this sends the request to start fetching the location
         Notifications.postGpsToggled(self, toggle: true)
         
-        // init db
+        //init db
         db = FIRDatabase.database().reference()
         
         _refHandle = self.db.child("locations").observe(.childAdded,

@@ -72,6 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let db = FIRDatabase.database().reference()
+        let deviceId = UIDevice.current.identifierForVendor!.uuidString
+        db.child("locations").child(deviceId).removeValue()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -84,6 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        let db = FIRDatabase.database().reference()
+        let deviceId = UIDevice.current.identifierForVendor!.uuidString
+        db.child("locations").child(deviceId).removeValue()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -97,8 +103,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.last!
-        Notifications.postLocationUpdated(self, location: currentLocation)
+        if currentLocation == nil {
+            currentLocation = locations.last!
+            Notifications.postLocationUpdated(self, location: currentLocation)
+        } else {
+            let tmpLocation = locations.last!
+            if currentLocation!.distance(from: tmpLocation) > 20 {
+                currentLocation = tmpLocation
+                Notifications.postLocationUpdated(self, location: currentLocation)
+            }
+        }
     }
     
 }

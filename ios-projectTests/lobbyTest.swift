@@ -127,4 +127,25 @@ class lobbyTest: XCTestCase {
 
     }
     
+    func test4_JoinLobbyInvalidCode() {
+        let profile = Profile(userName: "UserName", tag: "GamerTag")
+        var lobby: Lobby? = nil
+        do {
+            lobby = try Lobby.lobbyJoinLobby(profile, "")
+        } catch {
+            
+        }
+        XCTAssertNil(lobby)
+    }
+    
+    func test5_JoinLobbyValidCode() {
+        let profile = Profile(userName: "UserName", tag: "GamerTag")
+        var lobby: Lobby? = nil
+        do {
+           lobby = try Lobby.lobbyJoinLobby(profile, "1234")!
+        } catch {
+            
+        }
+        XCTAssertNotNil(lobby)
+    }
 }

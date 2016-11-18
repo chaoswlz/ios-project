@@ -10,6 +10,12 @@ import Foundation
 
 class Lobby{
     
+    enum LobbyJoinErrors: Error {
+        case LobbyFull
+        case LobbyCancelled
+        case GameStarted
+    }
+    
     var settings : GameSetting
     var host : Profile
     var playerList:[LobbyUser]
@@ -87,6 +93,43 @@ class Lobby{
     
     // Closes the lobby
     func lobbyCloseLobby(){}
+    
+    //will need a function to add a player to the players list when that exists
+    
+    // Update the list when a new player joins the lobby
+    func lobbyOnPlayerJoined(newPlayer: Profile) {
+        players += [(profile: newPlayer, isReady: false, isSeeker: false)]
+    }
+    
+    // Updates a players ready and seeker status when they change it
+    func lobbyOnPlayerStateChanged(userName: String, ready: Bool, seeker: Bool) {
+        for var row in players {
+            if (row.profile.userName == userName) {
+                row.isReady = ready
+                row.isSeeker = seeker
+            }
+        }
+    }
+    
+    
+    class func lobbyJoinLobby(_ profile: Profile, _ gameCode: String) throws -> Lobby?{
+        
+        if (gameCode.isEmpty) {
+            return nil
+        }
+        
+        let lobby = Lobby() // server.find.lobby(gameCode)
+        
+        // check lobby status (players full, lobby canceled, game started)
+        if (lobby.players.count == lobby.settings.maxPlayers) {
+            throw LobbyJoinErrors.LobbyFull
+        }
+        // lobby.players += (profile, false, false))
+        // server.notifyLobby(lobby)
+    
+        return lobby
+    }
+    
     
     class GameSetting{
         

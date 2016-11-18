@@ -20,18 +20,22 @@ class GameViewController: UIViewController {
     var temppin : MKPointAnnotation = MKPointAnnotation()
     
     var db: FIRDatabaseReference!
+    fileprivate var _refHandle: FIRDatabaseHandle!
+//    var locationsSnapshot: FIRDataSnapshot!
+    var locations: [(id: String, lat: Double, long: Double)] = []
     
-    var locations: [FIRDataSnapshot]! = []
     
     let username = "hello"
     let deviceId = UIDevice.current.identifierForVendor!.uuidString
     
-    fileprivate var _refHandle: FIRDatabaseHandle!
+
     
     var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureDatabase()
         
         // Center map on Map coordinates
         MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
@@ -83,13 +87,39 @@ class GameViewController: UIViewController {
         // this sends the request to start fetching the location
         Notifications.postGpsToggled(self, toggle: true)
         
-        // init db
+
+    }
+    
+    func configureDatabase() {
         db = FIRDatabase.database().reference()
+       
+        // read locations from db
+        _refHandle = self.db.child("locations").observe(.value, with: { [weak self] (snapshot) -> Void in
+            guard let strongSelf = self else { return }
+//            strongSelf.locationsSnapshot = snapshot
+            strongSelf.parseLocationsSnapshot(locations: snapshot)
+            })
         
-        _refHandle = self.db.child("locations").observe(.childAdded,
-                                                        with: { [weak self] (snapshot) -> Void in
-                                                            guard let strongSelf = self else { return }
-                                                            strongSelf.locations.append(snapshot) })
+    }
+    
+    // parse locations from db, store in array of tuples
+    func parseLocationsSnapshot(locations: FIRDataSnapshot) {
+        self.locations.removeAll()
+        for child in locations.children.allObjects as? [FIRDataSnapshot] ?? [] {
+            guard child.key != "(null" else { return }
+            let childId = child.key
+            let childLat = child.childSnapshot(forPath: "lat").value as! Double
+            let childLong = child.childSnapshot(forPath: "long").value as! Double
+            self.locations += [(id: childId, lat: childLat, long: childLong )]
+        }
+        print("***** updated locations array ****** \(self.locations)")
+        
+        // call functions once array of locations is updated
+    }
+    
+    
+    deinit {
+        self.db.child("locations").removeObserver(withHandle: _refHandle)
     }
     
     func postLocationToMap(templocation: CLLocationCoordinate2D) {

@@ -11,13 +11,15 @@ import MapKit
 
 import Firebase
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var MapView: MKMapView!
+    
     let notificationCentre = NotificationCenter.default
     let locationManager = CLLocationManager()
     var locationUpdatedObserver : AnyObject?
     var temppin : MKPointAnnotation = MKPointAnnotation()
+    var temppin2 : MKPointAnnotation = MKPointAnnotation()
     
     var tempLocation : CLLocationCoordinate2D?
     var map : Map?
@@ -31,7 +33,10 @@ class GameViewController: UIViewController {
     
     var lat = 0.0
     var long = 0.0
+    var lat2 = 0.0
+    var long2 = 0.0
     var mapRadius = 0.00486
+    var path: MKPolyline = MKPolyline()
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
@@ -39,7 +44,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.MapView.delegate = self
       
         // Center map on Map coordinates
         //MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
@@ -49,7 +54,9 @@ class GameViewController: UIViewController {
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-        temppin = MKPointAnnotation()
+        temppin  = MKPointAnnotation()
+        temppin2 = MKPointAnnotation()
+        
         
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
                                                                  object: nil,
@@ -89,6 +96,25 @@ class GameViewController: UIViewController {
                 self.MapView.addAnnotation(self.temppin)
                 
                 
+                
+                // ANOTHER PIN
+                if(self.lat2 == 0.0){
+                    // set second pin somewhere above and to left of center pin
+                    self.lat2 = location.coordinate.latitude + 0.003
+                    self.long2 = location.coordinate.longitude - 0.003
+                }
+                
+                // move the pin slowly to the right
+                self.long2 = self.long2 + 0.0001
+                
+                // display second pin
+                self.MapView.removeAnnotation(self.temppin2)
+                self.tempLocation  = CLLocationCoordinate2D(latitude: self.lat2, longitude: self.long2)
+                self.temppin2.coordinate = self.tempLocation!
+                self.MapView.addAnnotation(self.temppin2)
+                
+                // add the "arrow" on the second pin
+                self.UnoDirections(pointA: self.temppin, pointB: self.temppin2);
                
             }
         }
@@ -105,6 +131,41 @@ class GameViewController: UIViewController {
                                                             guard let strongSelf = self else { return }
                                                             strongSelf.locations.append(snapshot) })
     }
+    
+    func UnoDirections(pointA: MKPointAnnotation, pointB: MKPointAnnotation){
+
+        var coordinates = [CLLocationCoordinate2D]()
+        
+        let endLat = pointB.coordinate.latitude
+        let endLong = pointB.coordinate.longitude
+        let startLat = pointA.coordinate.latitude
+        let startLong = pointA.coordinate.longitude
+        
+        let endPointLat = startLat - (startLat - endLat)/10
+        let endPointLong = startLong - (startLong - endLong)/10
+        
+        coordinates += [CLLocationCoordinate2D(latitude: startLat, longitude: startLong)]
+        coordinates += [CLLocationCoordinate2D(latitude: endPointLat, longitude: endPointLong)]
+        
+        // remove previous "arrow"
+        self.MapView.remove(path)
+        
+        // update arrow
+        path = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        self.MapView.add(path)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if overlay.isKind(of: MKPolyline.self){
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.blue
+            polylineRenderer.lineWidth = 1
+            return polylineRenderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
+    }
+    
     
     func postLocationToMap(templocation: CLLocationCoordinate2D) {
         

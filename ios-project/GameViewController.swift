@@ -27,8 +27,11 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     var temppin  = CustomPointAnnotation()
     var temppin2  = CustomPointAnnotation()
     
+    //center pin
+    var centerPin = CustomPointAnnotation()
+    
     var tempLocation : CLLocationCoordinate2D?
-    var map : Map?
+//    var map : Map?
     
     
     var db: FIRDatabaseReference!
@@ -51,8 +54,9 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     var mapRadius = 0.00486
     var path: MKPolyline = MKPolyline()
 
+
     
-//    var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
+    var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,15 +67,20 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         self.MapView.delegate = self
       
         // Center map on Map coordinates
-        //MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
+        MapView.setRegion(convertRectToRegion(rect: map.mapActual), animated: true)
         
         //Disable user interaction
         MapView.isZoomEnabled = false;
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-     
+        //adding pin onto the center
+        let mapPointCoordinate : CLLocationCoordinate2D = MapView.centerCoordinate
+        centerPin.coordinate = mapPointCoordinate
+        centerPin.playerRole = "centerMap"
+        MapView.addAnnotation(centerPin)
         
+
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
                                                                  object: nil,
                                                                  queue: nil)
@@ -104,9 +113,9 @@ class GameViewController: UIViewController, MKMapViewDelegate {
                 self.temppin.coordinate = self.tempLocation!
                 
             
-                self.map = Map(topCorner: MKMapPoint(x: self.lat - self.mapRadius, y: self.long - self.mapRadius), botCorner: MKMapPoint(x: self.lat + self.mapRadius, y: self.long + self.mapRadius), tileSize: 1)
-                
-                self.MapView.setRegion(self.convertRectToRegion(rect: (self.map?.mapActual)!), animated: true)
+//                self.map = Map(topCorner: MKMapPoint(x: self.lat - self.mapRadius, y: self.long - self.mapRadius), botCorner: MKMapPoint(x: self.lat + self.mapRadius, y: self.long + self.mapRadius), tileSize: 1)
+//                
+//                self.MapView.setRegion(self.convertRectToRegion(rect: (self.map?.mapActual)!), animated: true)
                 
                 self.temppin.playerRole = "playerOne"
                 self.MapView.addAnnotation(self.temppin)
@@ -260,8 +269,10 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         
         if customAnnotation.playerRole == "playerOne" {
             annotationView!.image = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
-        } else {
+        } else if customAnnotation.playerRole == "playerTwo" {
             annotationView!.image = self.resizeImage(image: UIImage(named: "team_blue")!, targetSize: CGSize(30, 30))
+        } else if customAnnotation.playerRole == "centerMap"{
+            annotationView!.image = self.resizeImage(image: UIImage(named: "Pokeball")!, targetSize: CGSize(30, 30))
         }
         
         

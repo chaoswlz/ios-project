@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     var locations: [FIRDataSnapshot]! = []
     
     let username = "hello"
+    let deviceId = UIDevice.current.identifierForVendor!.uuidString
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
@@ -62,7 +63,7 @@ class GameViewController: UIViewController {
                 ]
                 
                 // POSTING TO DB
-                self.db.child("locations").childByAutoId().setValue(mdata)
+                self.db.child("locations").child(self.deviceId).setValue(mdata)
                 
                 // POSTING LAT LONG TO MAP
                 tempLocation  = CLLocationCoordinate2D(latitude: lat, longitude: long)

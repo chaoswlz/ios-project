@@ -35,6 +35,7 @@
 		A02714C21DCACE47000E06FE /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02714C11DCACE47000E06FE /* GameTests.swift */; };
 		A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965D1DB56DBD00ACD756 /* Profile.swift */; };
 		A90B96601DB5740500ACD756 /* ProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B965F1DB5740500ACD756 /* ProfileTest.swift */; };
+		B4FCF5741DDEFB0600EE2D65 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FCF5731DDEFB0600EE2D65 /* CustomPointAnnotation.swift */; };
 		BC0462861DB56F3E00C0D879 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0462851DB56F3E00C0D879 /* MapTests.swift */; };
 		BC7F2F0B1DDA792B0072F4E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC7F2F0A1DDA792B0072F4E9 /* GoogleService-Info.plist */; };
 		BCE4DEFF1DC7EC92001E2F34 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4DEFC1DC7EC92001E2F34 /* Game.swift */; };
@@ -101,6 +102,7 @@
 		A02714C11DCACE47000E06FE /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		A90B965D1DB56DBD00ACD756 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		A90B965F1DB5740500ACD756 /* ProfileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTest.swift; sourceTree = "<group>"; };
+		B4FCF5731DDEFB0600EE2D65 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		B98DA042C1F169F0BBB46091 /* Pods-ios-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-project.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-project/Pods-ios-project.debug.xcconfig"; sourceTree = "<group>"; };
 		BC0462851DB56F3E00C0D879 /* MapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTests.swift; sourceTree = "<group>"; };
 		BC7F2F0A1DDA792B0072F4E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				A00A5D091DB42999009E9E16 /* Map.swift */,
 				A00A5D0B1DB429AC009E9E16 /* Tile.swift */,
 				921F0EB01DB17AD500C747D8 /* Lobby.swift */,
+				B4FCF5731DDEFB0600EE2D65 /* CustomPointAnnotation.swift */,
 				7B834CAC1DCD0217005F597C /* GameViewController.swift */,
 			);
 			path = "ios-project";
@@ -424,7 +427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C4BB0C13D9E6A6E6A43A6DC2 /* [CP] Embed Pods Frameworks */ = {
@@ -456,6 +459,7 @@
 				0ACE49FF1DB8858200AA074B /* HiderInvisibility.swift in Sources */,
 				7A0A33B61DB16D3000C2F2D1 /* ViewController.swift in Sources */,
 				BCE4DF001DC7EC92001E2F34 /* LevelUp.swift in Sources */,
+				B4FCF5741DDEFB0600EE2D65 /* CustomPointAnnotation.swift in Sources */,
 				24A08B571DB5FA1E00B9CBBA /* Hider.swift in Sources */,
 				A90B965E1DB56DBD00ACD756 /* Profile.swift in Sources */,
 				7B834CAD1DCD0217005F597C /* GameViewController.swift in Sources */,

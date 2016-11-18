@@ -11,6 +11,12 @@ import MapKit
 
 import Firebase
 
+extension CGSize{
+    init(_ width:CGFloat,_ height:CGFloat) {
+        self.init(width:width,height:height)
+    }
+}
+
 class GameViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var MapView: MKMapView!
@@ -18,8 +24,8 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     let notificationCentre = NotificationCenter.default
     let locationManager = CLLocationManager()
     var locationUpdatedObserver : AnyObject?
-    var temppin : MKPointAnnotation = MKPointAnnotation()
-    var temppin2 : MKPointAnnotation = MKPointAnnotation()
+    var temppin  = CustomPointAnnotation()
+    var temppin2  = CustomPointAnnotation()
     
     var tempLocation : CLLocationCoordinate2D?
     var map : Map?
@@ -60,9 +66,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         MapView.isScrollEnabled = false;
         MapView.isUserInteractionEnabled = false;
         
-        temppin  = MKPointAnnotation()
-        temppin2 = MKPointAnnotation()
-        
+     
         
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
                                                                  object: nil,
@@ -92,13 +96,15 @@ class GameViewController: UIViewController, MKMapViewDelegate {
                 print(self.lat.description + " " + self.long.description)
                 // END OF DEBUG
                 
-                self.temppin = MKPointAnnotation()
+                self.temppin = CustomPointAnnotation()
                 self.temppin.coordinate = self.tempLocation!
+                
             
                 self.map = Map(topCorner: MKMapPoint(x: self.lat - self.mapRadius, y: self.long - self.mapRadius), botCorner: MKMapPoint(x: self.lat + self.mapRadius, y: self.long + self.mapRadius), tileSize: 1)
                 
                 self.MapView.setRegion(self.convertRectToRegion(rect: (self.map?.mapActual)!), animated: true)
                 
+                self.temppin.playerRole = "playerOne"
                 self.MapView.addAnnotation(self.temppin)
                 
                 
@@ -117,6 +123,8 @@ class GameViewController: UIViewController, MKMapViewDelegate {
                 self.MapView.removeAnnotation(self.temppin2)
                 self.tempLocation  = CLLocationCoordinate2D(latitude: self.lat2, longitude: self.long2)
                 self.temppin2.coordinate = self.tempLocation!
+                
+                self.temppin2.playerRole = "playerTwo"
                 self.MapView.addAnnotation(self.temppin2)
                 
                 // add the "arrow" on the second pin
@@ -177,8 +185,8 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         let startLat = pointA.coordinate.latitude
         let startLong = pointA.coordinate.longitude
         
-        let endPointLat = startLat - (startLat - endLat)/10
-        let endPointLong = startLong - (startLong - endLong)/10
+        let endPointLat = startLat - (startLat - endLat)/5
+        let endPointLong = startLong - (startLong - endLong)/5
         
         coordinates += [CLLocationCoordinate2D(latitude: startLat, longitude: startLong)]
         coordinates += [CLLocationCoordinate2D(latitude: endPointLat, longitude: endPointLong)]
@@ -200,6 +208,65 @@ class GameViewController: UIViewController, MKMapViewDelegate {
             return polylineRenderer
         }
         return MKOverlayRenderer(overlay: overlay)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            
+            return nil
+        }
+        
+        let annotationIdentifier = "AnnotationIdentifier"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView!.canShowCallout = true
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+
+        let customAnnotation = annotation as! CustomPointAnnotation
+        
+        if customAnnotation.playerRole == "playerOne" {
+            annotationView!.image = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
+        } else {
+            annotationView!.image = self.resizeImage(image: UIImage(named: "team_blue")!, targetSize: CGSize(30, 30))
+        }
+        
+        
+     
+        return annotationView
+        
+    }
+    
+    //Resize pin image
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
     
     

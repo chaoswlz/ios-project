@@ -98,12 +98,13 @@ class Lobby{
     
     // Update the list when a new player joins the lobby
     func lobbyOnPlayerJoined(newPlayer: Profile) {
-        players += [(profile: newPlayer, isReady: false, isSeeker: false)]
+        playerList.append(LobbyUser(newPlayer));
+        //players += [(profile: newPlayer, isReady: false, isSeeker: false)]
     }
     
     // Updates a players ready and seeker status when they change it
     func lobbyOnPlayerStateChanged(userName: String, ready: Bool, seeker: Bool) {
-        for var row in players {
+        for var row in playerList {
             if (row.profile.userName == userName) {
                 row.isReady = ready
                 row.isSeeker = seeker
@@ -118,10 +119,10 @@ class Lobby{
             return nil
         }
         
-        let lobby = Lobby() // server.find.lobby(gameCode)
+        let lobby = Lobby(profile) // server.find.lobby(gameCode)
         
         // check lobby status (players full, lobby canceled, game started)
-        if (lobby.players.count == lobby.settings.maxPlayers) {
+        if (lobby.playerList.count == lobby.settings.maxPlayers) {
             throw LobbyJoinErrors.LobbyFull
         }
         // lobby.players += (profile, false, false))

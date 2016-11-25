@@ -27,6 +27,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     var temppin  = CustomPointAnnotation()
     var temppin2  = CustomPointAnnotation()
     var invsablePower = HiderInvisibility()
+    var compassPower = SeekerCompass()
     
     //center pin
     var centerPin = CustomPointAnnotation()
@@ -81,6 +82,10 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         centerPin.playerRole = "centerMap"
         MapView.addAnnotation(centerPin)
         
+        
+        //TODO: Currently hardcoded, so it must be put in a loop once database is set up
+        
+        //1st power up
         //Get x and y coordinates of corners of the map
         let rx = self.map.bottomRightPoint.x
         let lx = self.map.topLeftPoint.x
@@ -90,13 +95,32 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         //Generate random coordinate for the powerup
         let r  = self.randomIn(lx,rx)
         let l  = self.randomIn(ly,ry)
-        
-    
         self.tempLocation  = CLLocationCoordinate2D(latitude: r, longitude: l)
         
         //Add the power up to the map
         self.invsablePower.coordinate = self.tempLocation!
         self.MapView.addAnnotation(self.invsablePower)
+        
+        
+        
+        //2nd power up
+        //Get x and y coordinates of corners of the map
+        let rx2 = self.map.bottomRightPoint.x
+        let lx2 = self.map.topLeftPoint.x
+        let ry2 = self.map.bottomRightPoint.y
+        let ly2 = self.map.topLeftPoint.y
+        
+        //Generate random coordinate for the powerup
+        let r2  = self.randomIn(lx2,rx2)
+        let l2  = self.randomIn(ly2,ry2)
+        self.tempLocation  = CLLocationCoordinate2D(latitude: r2, longitude: l2)
+        
+        //Add the power up to the map
+        self.compassPower.coordinate = self.tempLocation!
+        self.MapView.addAnnotation(self.compassPower)
+        
+        
+        
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
                                                                  object: nil,
                                                                  queue: nil)

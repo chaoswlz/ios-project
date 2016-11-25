@@ -48,7 +48,6 @@
 		ED6387671DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
 		ED6387681DB5844C00FEEFC7 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387661DB5844C00FEEFC7 /* Role.swift */; };
 		ED63876A1DB5851300FEEFC7 /* RoleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6387691DB5851300FEEFC7 /* RoleTest.swift */; };
-		FA08EF12B6DAC83F49DCE7C5 /* Pods_ios_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121483E64D7F1A6918FFEDBD /* Pods_ios_project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA08EF12B6DAC83F49DCE7C5 /* Pods_ios_project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,7 +639,6 @@
 			baseConfigurationReference = B98DA042C1F169F0BBB46091 /* Pods-ios-project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5FW7UNJP77;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ios-project/Info.plist";
@@ -658,7 +655,6 @@
 			baseConfigurationReference = 6CE61E75AC5B3617CE55F2AC /* Pods-ios-project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5FW7UNJP77;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "ios-project/Info.plist";

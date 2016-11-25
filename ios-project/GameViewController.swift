@@ -24,6 +24,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     let notificationCentre = NotificationCenter.default
     let locationManager = CLLocationManager()
     var locationUpdatedObserver : AnyObject?
+     var invsablePower = HiderInvisibility()
     var temppin  = CustomPointAnnotation()
     var temppin2  = CustomPointAnnotation()
     
@@ -80,7 +81,17 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         centerPin.playerRole = "centerMap"
         MapView.addAnnotation(centerPin)
         
-
+        
+        let rx = self.map.bottomRightPoint.x
+        let lx = self.map.topLeftPoint.x
+        let ry = self.map.bottomRightPoint.y
+        let ly = self.map.topLeftPoint.y
+        let r  = self.randomIn(lx,rx)
+        let l  = self.randomIn(ly,ry)
+        self.tempLocation  = CLLocationCoordinate2D(latitude: r, longitude: l)
+        // add the power up
+        self.invsablePower.coordinate = self.tempLocation!
+        self.MapView.addAnnotation(self.invsablePower)
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
                                                                  object: nil,
                                                                  queue: nil)
@@ -264,19 +275,23 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         else {
             annotationView!.annotation = annotation
         }
-
-        let customAnnotation = annotation as! CustomPointAnnotation
         
-        if customAnnotation.playerRole == "playerOne" {
-            annotationView!.image = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
-        } else if customAnnotation.playerRole == "playerTwo" {
-            annotationView!.image = self.resizeImage(image: UIImage(named: "team_blue")!, targetSize: CGSize(30, 30))
-        } else if customAnnotation.playerRole == "centerMap"{
-            annotationView!.image = self.resizeImage(image: UIImage(named: "Pokeball")!, targetSize: CGSize(30, 30))
+        if annotation is PowerUp{
+            let customAnnotation = annotation as! PowerUp
+            annotationView!.image = customAnnotation.icon
+            
+        }else if annotation is CustomPointAnnotation{
+            let customAnnotation = annotation as! CustomPointAnnotation
+            
+            if customAnnotation.playerRole == "playerOne" {
+                annotationView!.image = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
+            } else if customAnnotation.playerRole == "playerTwo" {
+                annotationView!.image = self.resizeImage(image: UIImage(named: "team_blue")!, targetSize: CGSize(30, 30))
+            } else if customAnnotation.playerRole == "centerMap"{
+                annotationView!.image = self.resizeImage(image: UIImage(named: "Pokeball")!, targetSize: CGSize(30, 30))
+            }
         }
-        
-        
-     
+ 
         return annotationView
         
     }
@@ -325,6 +340,14 @@ class GameViewController: UIViewController, MKMapViewDelegate {
             MKCoordinateSpan(latitudeDelta: rect.size.width, longitudeDelta: rect.size.height)
         )
     }
+    
+    func random() -> Double {
+        return Double(arc4random()) / 0xFFFFFFFF
+    }
+    func randomIn(_ min: Double,_ max: Double) -> Double {
+        return random() * (max - min ) + min
+    }
+    
 
     /*
     // MARK: - Navigation

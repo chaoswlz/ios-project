@@ -217,6 +217,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
             self.MapView.removeAnnotation(index!)
         }
         
+        pins.removeAll()
         // loop through each device and retrieve device id, lat and long, store in locations array
         for child in locations.children.allObjects as? [FIRDataSnapshot] ?? [] {
             guard child.key != "(null" else { return }
@@ -227,23 +228,58 @@ class GameViewController: UIViewController, MKMapViewDelegate {
             
             // ADDING OTHER DEVICES FROM DB TO THE MAP AND SAVING THAT LOCATION INTO GLOBAL VAR PINS
             if childId != deviceId {
+                
                 var tempLocation : CLLocationCoordinate2D
                 let temppin2  = CustomPointAnnotation()
                 tempLocation  = CLLocationCoordinate2D(latitude: childLat, longitude: childLong)
+                
                 temppin2.coordinate = tempLocation
                 temppin2.playerRole = "playerTwo"
                 pins.append(temppin2)
                 // add arrows pointing to all devices
                 
                 self.MapView.addAnnotation(temppin2)
-                self.UnoDirections(pointA: self.temppin, pointB: temppin2);
+                
             }
         }
+        pointToNearestPin()
         
         print("***** updated locations array ****** \(self.locations)")
         
         // call functions once array of locations is updated
         
+    }
+    
+    func pointToNearestPin(){
+        
+        
+        if(pins.count > 0){
+            // CLLocation of user pin
+            let userLoc = CLLocation(latitude: temppin.coordinate.latitude, longitude: temppin.coordinate.longitude)
+            
+            // pin of current smallest distance
+            let smallestDistancePin = CustomPointAnnotation()
+            var smallestDistance = 10000000.0
+            for pin in pins{
+            
+                // create a CLLocation for each pin
+                let loc = CLLocation(latitude: (pin?.coordinate.latitude)!, longitude: (pin?.coordinate.longitude)!)
+                
+                // get the distance between pins
+                let distance = userLoc.distance(from: loc)
+                
+                if(smallestDistance > distance){
+                    smallestDistance = distance
+                    
+                    // assign pin to smallest distance pin
+                    let tempLocation  = loc.coordinate
+                    smallestDistancePin.coordinate = tempLocation
+                }
+            }
+            
+            // point arrow to smallest distance pin
+            self.UnoDirections(pointA: self.temppin, pointB: smallestDistancePin);
+        }
     }
     
     

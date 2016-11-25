@@ -34,9 +34,9 @@ class SeekerCompass : MKPointAnnotation, PowerUp {
         self.expireTime  = 60 * 3
         self.energyCost  = 60 * 3
         self.isActive    = false
-        self.icon        = UIImage(named: "invisable")!
+        self.icon        = UIImage(named: "compass")!
         super.init()
-        self.icon        = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
+        self.icon        = self.resizeImage(image: UIImage(named: "compass")!, targetSize: CGSize(30, 30))
         
     }
     
@@ -44,7 +44,7 @@ class SeekerCompass : MKPointAnnotation, PowerUp {
         self.name        = SeekerCompass.DEFAULT_NAME
         self.role        = SeekerCompass.DEFAULT_ROLE
         self.powerDescription = SeekerCompass.DEFAULT_DESC
-        self.icon        = UIImage(named: "invisable")!
+        self.icon        = UIImage(named: "compass")!
         
         
         
@@ -57,7 +57,7 @@ class SeekerCompass : MKPointAnnotation, PowerUp {
             self.isActive    = isActive
         }
         super.init()
-        self.icon        = self.resizeImage(image: UIImage(named: "team_red")!, targetSize: CGSize(30, 30))
+        self.icon        = self.resizeImage(image: UIImage(named: "compass")!, targetSize: CGSize(30, 30))
     }
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {

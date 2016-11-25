@@ -35,9 +35,9 @@ class HiderInvisibility : MKPointAnnotation, PowerUp {
         self.expireTime  = 60 * 3
         self.energyCost  = 60 * 3
         self.isActive    = false
-        self.icon        = UIImage(named: "invisable")!
+        self.icon        = UIImage(named: "invisible")!
         super.init()
-        self.icon        = self.resizeImage(image: UIImage(named: "invisable")!, targetSize: CGSize(30, 30))
+        self.icon        = self.resizeImage(image: UIImage(named: "invisible")!, targetSize: CGSize(30, 30))
         
     }
     
@@ -46,7 +46,8 @@ class HiderInvisibility : MKPointAnnotation, PowerUp {
         self.name        = HiderInvisibility.DEFAULT_NAME
         self.role        = HiderInvisibility.DEFAULT_ROLE
         self.powerDescription = HiderInvisibility.DEFAULT_DESC
-        self.icon        = UIImage(named: "invisable")!
+        self.icon        = UIImage(named: "invisible")!
+        
         
         if(duration <= 0 || expireTime <= 0 || energyCost <= 0){
             throw PowerUpError.illegalArgument
@@ -57,7 +58,7 @@ class HiderInvisibility : MKPointAnnotation, PowerUp {
             self.isActive    = isActive
         }
         super.init()
-        self.icon = self.resizeImage(image: UIImage(named: "invisable")!, targetSize: CGSize(30, 30))
+        self.icon = self.resizeImage(image: UIImage(named: "invisible")!, targetSize: CGSize(30, 30))
     }
     
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {

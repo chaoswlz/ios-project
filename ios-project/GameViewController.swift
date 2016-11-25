@@ -24,9 +24,9 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     let notificationCentre = NotificationCenter.default
     let locationManager = CLLocationManager()
     var locationUpdatedObserver : AnyObject?
-     var invsablePower = HiderInvisibility()
     var temppin  = CustomPointAnnotation()
     var temppin2  = CustomPointAnnotation()
+    var invsablePower = HiderInvisibility()
     
     //center pin
     var centerPin = CustomPointAnnotation()
@@ -81,15 +81,20 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         centerPin.playerRole = "centerMap"
         MapView.addAnnotation(centerPin)
         
-        
+        //Get x and y coordinates of corners of the map
         let rx = self.map.bottomRightPoint.x
         let lx = self.map.topLeftPoint.x
         let ry = self.map.bottomRightPoint.y
         let ly = self.map.topLeftPoint.y
+        
+        //Generate random coordinate for the powerup
         let r  = self.randomIn(lx,rx)
         let l  = self.randomIn(ly,ry)
+        
+    
         self.tempLocation  = CLLocationCoordinate2D(latitude: r, longitude: l)
-        // add the power up
+        
+        //Add the power up to the map
         self.invsablePower.coordinate = self.tempLocation!
         self.MapView.addAnnotation(self.invsablePower)
         locationUpdatedObserver = notificationCentre.addObserver(forName: NSNotification.Name(rawValue: Notifications.LocationUpdated),
@@ -275,6 +280,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         else {
             annotationView!.annotation = annotation
         }
+        
         
         if annotation is PowerUp{
             let customAnnotation = annotation as! PowerUp

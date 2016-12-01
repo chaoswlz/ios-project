@@ -53,7 +53,9 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     var long2 = 0.0
     var mapRadius = 0.00486
     var path: MKPolyline = MKPolyline()
-
+    
+    // stores power-ups on the map
+    var powerUp = [Int: CLLocationCoordinate2D]()
 
     
     var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
@@ -104,12 +106,18 @@ class GameViewController: UIViewController, MKMapViewDelegate {
                 self.MapView.addAnnotation(invsablePower)
 
             
+                //store the id and locations of the PowerUps, it is easier to find out which power up on the map is to be used or removed
+                powerUp[i] = invsablePower.coordinate
+                
             }else{
             
                 let compassPower = try! SeekerCompass(id: i,duration: 30,isActive: true)
                 //Add the power up to the map
                 compassPower.coordinate = self.tempLocation!
                 self.MapView.addAnnotation(compassPower)
+                
+                //store the id and locations of the PowerUps, it is easier to find out which power up on the map is to be used or removed
+                powerUp[i] = compassPower.coordinate
             }
         
         }
@@ -200,6 +208,12 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         Notifications.postGpsToggled(self, toggle: true)
         
 
+    }
+    
+    // remove the pin(power up), when it is used or collected by a player, from the map
+    func activePowerUp(id: Int) {
+        let thePowerUp = try! HiderInvisibility(id: id, duration: 30, isActive: false)
+        self.MapView.removeAnnotation(powerUp[id])
     }
     
     func configureDatabase() {

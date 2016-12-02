@@ -55,7 +55,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     var path: MKPolyline = MKPolyline()
     
     // stores power-ups on the map
-    var powerUp = [Int: CLLocationCoordinate2D]()
+    var powerUp = [Int: PowerUp]()
 
     
     var map : Map = Map(topCorner: MKMapPoint(x: 49.247815, y: -123.004096), botCorner: MKMapPoint(x: 49.254675, y: -122.997617), tileSize: 1)
@@ -92,7 +92,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         let ry = self.map.bottomRightPoint.y
         let ly = self.map.topLeftPoint.y
         
-        for i in 0 ... numberOfPower{
+        for i in 1 ... numberOfPower{
             //Generate random coordinate for the powerup
             let r  = self.randomIn(lx,rx)
             let l  = self.randomIn(ly,ry)
@@ -107,7 +107,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
 
             
                 //store the id and locations of the PowerUps, it is easier to find out which power up on the map is to be used or removed
-                powerUp[i] = invsablePower.coordinate
+                powerUp[i] = invsablePower
                 
             }else{
             
@@ -117,7 +117,7 @@ class GameViewController: UIViewController, MKMapViewDelegate {
                 self.MapView.addAnnotation(compassPower)
                 
                 //store the id and locations of the PowerUps, it is easier to find out which power up on the map is to be used or removed
-                powerUp[i] = compassPower.coordinate
+                powerUp[i] = compassPower
             }
         
         }
@@ -217,8 +217,8 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     
     // remove the pin(power up), when it is used or collected by a player, from the map
     func activePowerUp(id: Int) {
-        let thePowerUp = try! HiderInvisibility(id: id, duration: 30, isActive: false)
-        self.MapView.removeAnnotation(powerUp[id])
+        let thePowerUp = powerUp[id]
+        self.MapView.removeAnnotation(thePowerUp as! MKAnnotation)
     }
 
     
